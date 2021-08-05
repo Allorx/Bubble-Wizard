@@ -1,0 +1,25 @@
+local anim_length = 0.5
+local angle = 20
+local jump_height = 1
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	-- for 3d rendering
+	msg.post("@render:", "use_camera_projection")
+	msg.post("camera", "acquire_camera_focus")
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("touch") then
+		-- !!!!! 960 is the same width as in game.project - must be same
+		if action.x < 960/2 then
+			-- rotate left
+			go.animate(".", "euler.y", go.PLAYBACK_ONCE_FORWARD, go.get(".", "euler.y") + angle, go.EASING_LINEAR, anim_length)
+		else
+			-- rotate right
+			go.animate(".", "euler.y", go.PLAYBACK_ONCE_FORWARD, go.get(".", "euler.y") - angle, go.EASING_LINEAR, anim_length)
+		end
+		-- move up
+		go.animate(".", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position(".").y + jump_height, go.EASING_LINEAR, anim_length)
+	end
+end
