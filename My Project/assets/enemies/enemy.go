@@ -1,6 +1,6 @@
 components {
-  id: "stair"
-  component: "/assets/stairs/stair.script"
+  id: "enemy"
+  component: "/assets/enemies/enemy.script"
   position {
     x: 0.0
     y: 0.0
@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/stairs/stair.dae\"\n"
+  data: "mesh: \"/assets/test/sphere.dae\"\n"
   "material: \"/assets/test/unlit.material\"\n"
   "textures: \"/assets/test/purple_checkerboard.jpg\"\n"
   "skeleton: \"\"\n"
@@ -26,13 +26,13 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: -1.0
+    y: 0.0
     z: 3.0
   }
   rotation {
     x: 0.0
-    y: 0.70710677
+    y: 0.0
     z: 0.0
-    w: 0.70710677
+    w: 1.0
   }
 }

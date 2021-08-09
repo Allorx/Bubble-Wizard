@@ -1,0 +1,22 @@
+local buff = "#buff_factory"
+local enemy = "#enemy_factory"
+
+function init(self)
+	math.randomseed(os.time())
+end
+
+function create_buff(self)
+	factory.create(buff, go.get_world_position("."), vmath.quat_rotation_y(math.random() + math.random(0, 5)))
+end
+
+function create_enemy(self)
+	factory.create(enemy, go.get_world_position("."), vmath.quat_rotation_y(math.random() + math.random(0, 5)))
+end
+
+function on_message(self, message_id, message)
+	if message_id == hash("create_buff") then
+		create_buff(self)
+	elseif message_id == hash("create_enemy") then
+		create_enemy(self)
+	end
+end

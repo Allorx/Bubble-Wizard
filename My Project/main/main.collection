@@ -3,6 +3,8 @@ instances {
   id: "char"
   prototype: "/assets/char/char.go"
   children: "camera"
+  children: "cylinder"
+  children: "object_spawner"
   position {
     x: 0.0
     y: 0.0
@@ -53,6 +55,46 @@ instances {
     y: 0.70710677
     z: 0.0
     w: 0.70710677
+  }
+  scale3 {
+    x: 0.5
+    y: 0.5
+    z: 0.5
+  }
+}
+instances {
+  id: "cylinder"
+  prototype: "/assets/cylinder.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "object_spawner"
+  prototype: "/assets/object_spawner.go"
+  position {
+    x: 0.0
+    y: 9.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
   scale3 {
     x: 1.0

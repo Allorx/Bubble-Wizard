@@ -1,7 +1,7 @@
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/stairs/stair.dae\"\n"
+  data: "mesh: \"/assets/test/cylinder.dae\"\n"
   "material: \"/assets/test/unlit.material\"\n"
   "textures: \"/assets/test/white.jpg\"\n"
   "skeleton: \"\"\n"

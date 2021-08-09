@@ -1,6 +1,6 @@
 components {
-  id: "char"
-  component: "/assets/char/char.script"
+  id: "object_spawner"
+  component: "/assets/object_spawner.script"
   position {
     x: 0.0
     y: 0.0
@@ -14,20 +14,15 @@ components {
   }
 }
 embedded_components {
-  id: "body"
-  type: "model"
-  data: "mesh: \"/assets/test/sphere.dae\"\n"
-  "material: \"/assets/test/unlit.material\"\n"
-  "textures: \"/assets/test/purple_checkerboard.jpg\"\n"
-  "skeleton: \"\"\n"
-  "animations: \"\"\n"
-  "default_animation: \"\"\n"
-  "name: \"unnamed\"\n"
+  id: "enemy_factory"
+  type: "factory"
+  data: "prototype: \"/assets/enemies/enemy.go\"\n"
+  "load_dynamically: false\n"
   ""
   position {
     x: 0.0
     y: 0.0
-    z: 3.0
+    z: 0.0
   }
   rotation {
     x: 0.0
@@ -37,9 +32,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "stair_factory"
+  id: "buff_factory"
   type: "factory"
-  data: "prototype: \"/assets/stairs/stair.go\"\n"
+  data: "prototype: \"/assets/buffs/buff.go\"\n"
   "load_dynamically: false\n"
   ""
   position {

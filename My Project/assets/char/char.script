@@ -3,6 +3,8 @@ local angle = 20
 local jump_height = 1
 local stair = "#stair_factory"
 
+go.property("stair_scale", vmath.vector3(0.5, 0.5, 0.5))
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	-- for 3d rendering
@@ -10,6 +12,7 @@ function init(self)
 	msg.post("camera", "acquire_camera_focus")
 
 	self.can_touch = true
+	self.created_buff = true
 end
 
 function on_input(self, action_id, action)
@@ -30,13 +33,23 @@ function on_input(self, action_id, action)
 end
 
 function anim_complete(self)
-	create_stair()
+	-- spawn stuff
+	create_object(self)
+	create_stair(self)
 	self.can_touch = true
 end
 
-function create_stair()
-	factory.create(stair, go.get_position("#char"), go.get_rotation("#char"))
+function create_stair(self)
+	factory.create(stair, go.get_position("#char"), go.get_rotation("#char"), nil, self.stair_scale)
 end
 
-
+function create_object(self)
+	if self.created_buff == true then
+		msg.post("/object_spawner", "create_enemy")
+		self.created_buff = false
+	elseif self.created_buff == false then
+		msg.post("/object_spawner", "create_buff")
+		self.created_buff = true
+	end
+end
 

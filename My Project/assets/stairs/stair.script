@@ -2,6 +2,6 @@ function init(self)
 	timer.delay(4, false, delete_me)
 end
 
-function delete_me(self, handle, time_elapsed)
+function delete_me(self)
 	go.delete(".")
 end
