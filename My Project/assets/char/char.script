@@ -53,3 +53,24 @@ function create_object(self)
 	end
 end
 
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") then
+		if message.enter then
+			solve_collision(self, message)
+		else
+			-- on trigger exit
+		end
+	end
+end
+
+function solve_collision(self, message)
+	-- react to collision
+	if message.other_group == hash("buff") then
+		-- buff collision
+		print("I collided with", message.other_group)
+	elseif message.other_group == hash("enemy") then
+		-- enemy collision
+		print("I collided with", message.other_group)
+	end
+end
+
