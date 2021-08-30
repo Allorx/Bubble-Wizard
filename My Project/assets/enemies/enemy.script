@@ -1,11 +1,52 @@
-go.property("delete_dist", 20)
+go.property("velocity", 0)
+go.property("enabled", false)
+go.property("counter", 0)
+
+function init(self)
+	timer.delay(1.5, false, enable_trigger)
+end
 
 function update(self, dt)
-	if go.get_world_position("/char").y - go.get_position(".").y > self.delete_dist then
-		delete_me(self)
+	rotate(".", rotation() + self.velocity * dt)
+end
+
+-- rotate & rotation function from: https://forum.defold.com/t/simple-rotation-and-facing/65681
+function rotate(from, to)
+	if tonumber(to) then
+		if to == nil then
+			to = go.get_id()
+		end
+		go.set(from, "euler.y", to)
+	else
+		local direction = go.get_position(to) - go.get_position(from)
+		local rotation = vmath.quat_rotation_z(math.atan2(direction.y, direction.x))
+		go.set_rotation(rotation, from)
 	end
 end
 
-function delete_me(self)
+function rotation(url)
+	return go.get(url or ".", "euler.y")
+end
+
+function enable_trigger(self)
+	self.enabled = true
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") and self.enabled == true then
+		if message.enter and message.other_group == hash("bolt") then
+			post_me(self)
+			try_me(self)
+		end
+	end
+end
+
+function post_me(self)
+	if self.counter ~= 2 then
+		msg.post("/object_spawner", "create_enemy", {select_counter = self.counter})
+	end
+end
+
+function try_me(self)
 	go.delete(".")
 end

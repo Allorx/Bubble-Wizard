@@ -1,7 +1,0 @@
-mesh: "/assets/test/sphere.dae"
-material: "/assets/test/unlit.material"
-textures: "/assets/test/purple_checkerboard.jpg"
-skeleton: "/assets/test/sphere.dae"
-animations: "/assets/test/sphere.dae"
-default_animation: ""
-name: "unnamed"

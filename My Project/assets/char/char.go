@@ -13,29 +13,14 @@ components {
     w: 1.0
   }
 }
-components {
-  id: "main_char"
-  component: "/assets/char/main_char.model"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 3.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
 embedded_components {
   id: "collisionobject"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
+  "type: COLLISION_OBJECT_TYPE_TRIGGER\n"
   "mass: 0.0\n"
-  "friction: 0.1\n"
-  "restitution: 0.5\n"
+  "friction: 0.0\n"
+  "restitution: 0.0\n"
   "group: \"char\"\n"
   "mask: \"buff\"\n"
   "mask: \"enemy\"\n"
@@ -62,6 +47,47 @@ embedded_components {
   "angular_damping: 0.0\n"
   "locked_rotation: false\n"
   "bullet: false\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "model"
+  type: "model"
+  data: "mesh: \"/assets/test/sphere.dae\"\n"
+  "material: \"/assets/test/unlit.material\"\n"
+  "textures: \"/assets/test/purple_checkerboard.jpg\"\n"
+  "skeleton: \"\"\n"
+  "animations: \"\"\n"
+  "default_animation: \"\"\n"
+  "name: \"unnamed\"\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 3.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "bolt_factory"
+  type: "factory"
+  data: "prototype: \"/assets/bolts/bolt.go\"\n"
+  "load_dynamically: false\n"
   ""
   position {
     x: 0.0

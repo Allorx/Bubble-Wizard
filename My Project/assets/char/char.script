@@ -1,6 +1,9 @@
 local velocity_addition = 25
 local velocity = 0
 local tap_delay = 0.2
+local friction = 0.1
+local velocity_mult = 1.8
+local attack_length = 1
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -9,13 +12,11 @@ function init(self)
 	msg.post("camera", "acquire_camera_focus")
 
 	self.can_touch = true
-	self.friction = 0.1
-	self.velocity_mult = 1.8
 end
 
 function update(self, dt)
 	rotate(".", rotation() + velocity * dt)
-	velocity = velocity*(1-self.friction)
+	velocity = velocity*(1-friction)
 end
 
 function on_input(self, action_id, action)
@@ -27,18 +28,47 @@ function on_input(self, action_id, action)
 		elseif action.released then
 			if (socket.gettime() - self.pressed_time) > tap_delay then
 				-- held
-				print("held")
+				self.can_touch = false
+				attack(self)
 			else
 				--tapped
 				if action.x < 960/2 then
 					-- rotate left
-					velocity = (velocity-velocity_addition)*self.velocity_mult
+					velocity = (velocity-velocity_addition)*velocity_mult
 				else
 					-- rotate right
-					velocity = (velocity+velocity_addition)*self.velocity_mult
+					velocity = (velocity+velocity_addition)*velocity_mult
 				end
 			end
 		end
+	end
+end
+
+function attack(self)
+	go.animate(".", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.5, go.EASING_INOUTSINE, attack_length, 0, end_attack)
+	factory.create("#bolt_factory", go.get_world_position(), go.get_world_rotation(), nil, vmath.vector3(0.05, 1, 0.05))
+end
+
+function end_attack(self)
+	self.can_touch = true
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") then
+		if message.enter then
+			solve_collision(self, message)
+		end
+	end
+end
+
+function solve_collision(self, message)
+	-- react to collision
+	if message.other_group == hash("buff") then
+		-- buff collision
+		print("I collided with", message.other_group)
+	elseif message.other_group == hash("enemy") then
+		-- enemy collision
+		print("Lose", message.other_group)
 	end
 end
 
@@ -80,27 +110,6 @@ function create_object(self)
 	elseif self.created_buff == false then
 		msg.post("/object_spawner", "create_buff")
 		self.created_buff = true
-	end
-end
-
-function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") then
-		if message.enter then
-			solve_collision(self, message)
-		else
-			-- on trigger exit
-		end
-	end
-end
-
-function solve_collision(self, message)
-	-- react to collision
-	if message.other_group == hash("buff") then
-		-- buff collision
-		print("I collided with", message.other_group)
-	elseif message.other_group == hash("enemy") then
-		-- enemy collision
-		print("I collided with", message.other_group)
 	end
 end
 ]]--
