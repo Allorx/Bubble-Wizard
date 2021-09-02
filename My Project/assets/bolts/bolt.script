@@ -1,7 +1,0 @@
-function init(self)
-	timer.delay(1, false, delete_me)
-end
-
-function delete_me(self)
-	go.delete(".")
-end

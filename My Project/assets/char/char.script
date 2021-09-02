@@ -3,7 +3,9 @@ local velocity = 0
 local tap_delay = 0.2
 local friction = 0.1
 local velocity_mult = 1.8
-local attack_length = 1
+local attack_length = 0.5
+local checked_held = false
+local attack_offset = 30
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -11,6 +13,8 @@ function init(self)
 	msg.post("@render:", "use_camera_projection")
 	msg.post("camera", "acquire_camera_focus")
 
+	self.bolt_id = go.get_id("/bolt")
+	self.bolt_pos = go.get_position(self.bolt_id).y
 	self.can_touch = true
 end
 
@@ -21,55 +25,40 @@ end
 
 function on_input(self, action_id, action)
 	if action_id == hash("touch") and self.can_touch == true then
-		-- !!!!! 960 is the same width as in game.project - must be same
+		-- !!!!! 640 is the same width as in game.project - must be same
 		-- check if held
 		if action.pressed then
-			self.pressed_time = socket.gettime()
-		elseif action.released then
-			if (socket.gettime() - self.pressed_time) > tap_delay then
-				-- held
-				self.can_touch = false
-				attack(self)
+			checked_held = false
+			self.handle = timer.delay(tap_delay, false, func_held)
+		elseif action.released and checked_held == false then
+			--tapped
+			timer.cancel(self.handle)
+			if action.x < 640/2 then
+				-- rotate left
+				velocity = (velocity-velocity_addition)*velocity_mult
 			else
-				--tapped
-				if action.x < 960/2 then
-					-- rotate left
-					velocity = (velocity-velocity_addition)*velocity_mult
-				else
-					-- rotate right
-					velocity = (velocity+velocity_addition)*velocity_mult
-				end
+				-- rotate right
+				velocity = (velocity+velocity_addition)*velocity_mult
 			end
 		end
 	end
 end
 
+function func_held(self)
+	-- held
+	checked_held = true
+	attack(self)
+end
+
 function attack(self)
-	go.animate(".", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.5, go.EASING_INOUTSINE, attack_length, 0, end_attack)
-	factory.create("#bolt_factory", go.get_world_position(), go.get_world_rotation(), nil, vmath.vector3(0.05, 1, 0.05))
+	self.can_touch = false
+	go.set(self.bolt_id, "position.y", attack_offset)
+	go.animate(self.bolt_id, "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y, go.EASING_LINEAR, attack_length, 0, end_attack)
 end
 
 function end_attack(self)
 	self.can_touch = true
-end
-
-function on_message(self, message_id, message, sender)
-	if message_id == hash("trigger_response") then
-		if message.enter then
-			solve_collision(self, message)
-		end
-	end
-end
-
-function solve_collision(self, message)
-	-- react to collision
-	if message.other_group == hash("buff") then
-		-- buff collision
-		print("I collided with", message.other_group)
-	elseif message.other_group == hash("enemy") then
-		-- enemy collision
-		print("Lose", message.other_group)
-	end
+	go.set(self.bolt_id, "position.y", self.bolt_pos)
 end
 
 -- rotate & rotation function from: https://forum.defold.com/t/simple-rotation-and-facing/65681
@@ -89,27 +78,3 @@ end
 function rotation(url)
 	return go.get(url or ".", "euler.y")
 end
-
-
---[[
-function anim_complete(self)
-	-- spawn stuff
-	create_object(self)
-	create_stair(self)
-	self.can_touch = true
-end
-
-function create_stair(self)
-	factory.create(stair, go.get_position("#char"), go.get_rotation("#char"), nil, self.stair_scale)
-end
-
-function create_object(self)
-	if self.created_buff == true then
-		msg.post("/object_spawner", "create_enemy")
-		self.created_buff = false
-	elseif self.created_buff == false then
-		msg.post("/object_spawner", "create_buff")
-		self.created_buff = true
-	end
-end
-]]--

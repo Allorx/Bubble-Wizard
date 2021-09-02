@@ -1,31 +1,18 @@
 go.property("velocity", 0)
 go.property("enabled", false)
+-- counter is used to store the iteration of enemy i.e. big enemy splits into smaller enemies until final counter.
 go.property("counter", 0)
+go.property("final_counter", 3)
 
 function init(self)
 	timer.delay(1.5, false, enable_trigger)
+	self.bolt_id = go.get_id("/bolt")
 end
 
 function update(self, dt)
-	rotate(".", rotation() + self.velocity * dt)
-end
-
--- rotate & rotation function from: https://forum.defold.com/t/simple-rotation-and-facing/65681
-function rotate(from, to)
-	if tonumber(to) then
-		if to == nil then
-			to = go.get_id()
-		end
-		go.set(from, "euler.y", to)
-	else
-		local direction = go.get_position(to) - go.get_position(from)
-		local rotation = vmath.quat_rotation_z(math.atan2(direction.y, direction.x))
-		go.set_rotation(rotation, from)
-	end
-end
-
-function rotation(url)
-	return go.get(url or ".", "euler.y")
+	--rotate around y axis by velocity
+	local new_pos = vmath.rotate(vmath.quat_rotation_y(self.velocity * dt), go.get_world_position())
+	go.set_position(new_pos)
 end
 
 function enable_trigger(self)
@@ -34,17 +21,22 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("trigger_response") and self.enabled == true then
-		if message.enter and message.other_group == hash("bolt") then
+		-- react to collision
+		if message.other_group == hash("bolt") then
 			post_me(self)
 			try_me(self)
+		elseif message.other_group == hash("char") then
+			-- collided with char
+			print("Lose", message.other_group)
 		end
 	end
 end
 
 function post_me(self)
-	if self.counter ~= 2 then
-		msg.post("/object_spawner", "create_enemy", {select_counter = self.counter})
+	if self.counter ~= self.final_counter then
+		msg.post("/object_spawner", "create_enemy", {select_counter = self.counter, set_position = vmath.vector3(go.get_world_position(self.bolt_id).x, go.get_world_position().y, go.get_world_position(self.bolt_id).z)})
 	end
+	msg.post("/score_controller", "add_score", {amount = self.counter+1})
 end
 
 function try_me(self)

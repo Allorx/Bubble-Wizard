@@ -32,9 +32,9 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "buff_factory"
+  id: "buff_factory0"
   type: "factory"
-  data: "prototype: \"/assets/buffs/buff.go\"\n"
+  data: "prototype: \"/assets/buffs/lowgrav_buff.go\"\n"
   "load_dynamically: false\n"
   ""
   position {

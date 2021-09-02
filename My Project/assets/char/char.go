@@ -30,7 +30,7 @@ embedded_components {
   "    position {\n"
   "      x: 0.0\n"
   "      y: 0.0\n"
-  "      z: 3.0\n"
+  "      z: 4.0\n"
   "    }\n"
   "    rotation {\n"
   "      x: 0.0\n"
@@ -74,25 +74,7 @@ embedded_components {
   position {
     x: 0.0
     y: 0.0
-    z: 3.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "bolt_factory"
-  type: "factory"
-  data: "prototype: \"/assets/bolts/bolt.go\"\n"
-  "load_dynamically: false\n"
-  ""
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
+    z: 4.0
   }
   rotation {
     x: 0.0

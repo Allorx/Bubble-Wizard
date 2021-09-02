@@ -1,0 +1,40 @@
+go.property("spawn_interval", 30)
+
+local function load_highscore()
+	local filename = sys.get_save_file("sys_save_load", "highscore")
+	local data = sys.load(filename)
+	return data.highscore or 0
+end
+
+local function save_highscore(highscore)
+	local filename = sys.get_save_file("sys_save_load", "highscore")
+	sys.save(filename, { highscore = highscore })
+end
+
+local function update_labels(score, highscore)
+	label.set_text("#score", score)
+	label.set_text("#highscore", highscore)
+end
+
+function init(self)
+	self.score = 0
+	self.highscore = load_highscore()
+	update_labels(self.score, self.highscore)
+	-- set spawn target
+	self.spawn_target = self.spawn_interval
+end
+
+function on_message(self, message_id, message)
+	if message_id == hash("add_score") then
+		self.score = self.score + message.amount
+		if self.score > self.highscore then
+			self.highscore = self.score
+			save_highscore(self.highscore)
+		end
+		update_labels(self.score, self.highscore)
+		if self.score > self.spawn_target then
+			self.spawn_target = self.score + self.spawn_interval
+			msg.post("object_spawner", "spawn_new")
+		end
+	end
+end

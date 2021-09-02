@@ -1,38 +1,3 @@
-components {
-  id: "bolt"
-  component: "/assets/bolts/bolt.script"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
-embedded_components {
-  id: "sprite"
-  type: "sprite"
-  data: "tile_set: \"/builtins/graphics/particle_blob.tilesource\"\n"
-  "default_animation: \"anim\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
-  ""
-  position {
-    x: 0.0
-    y: 5.0
-    z: 3.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-}
 embedded_components {
   id: "collisionobject"
   type: "collisionobject"
@@ -45,11 +10,11 @@ embedded_components {
   "mask: \"enemy\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
-  "    shape_type: TYPE_BOX\n"
+  "    shape_type: TYPE_CAPSULE\n"
   "    position {\n"
   "      x: 0.0\n"
-  "      y: 5.0\n"
-  "      z: 3.0\n"
+  "      y: 7.0\n"
+  "      z: 0.0\n"
   "    }\n"
   "    rotation {\n"
   "      x: 0.0\n"
@@ -58,11 +23,10 @@ embedded_components {
   "      w: 1.0\n"
   "    }\n"
   "    index: 0\n"
-  "    count: 3\n"
+  "    count: 2\n"
   "  }\n"
-  "  data: 0.05\n"
-  "  data: 10.0\n"
-  "  data: 0.5\n"
+  "  data: 0.1\n"
+  "  data: 13.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
@@ -72,6 +36,29 @@ embedded_components {
   position {
     x: 0.0
     y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "model"
+  type: "model"
+  data: "mesh: \"/assets/test/cylinder.dae\"\n"
+  "material: \"/assets/test/unlit.material\"\n"
+  "textures: \"/assets/test/purple_checkerboard.jpg\"\n"
+  "skeleton: \"\"\n"
+  "animations: \"\"\n"
+  "default_animation: \"\"\n"
+  "name: \"unnamed\"\n"
+  ""
+  position {
+    x: 0.0
+    y: 7.0
     z: 0.0
   }
   rotation {

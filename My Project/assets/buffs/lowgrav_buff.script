@@ -1,0 +1,18 @@
+-- low grav buff, reduces gravity for 10 seconds - doesn't work well, used for tests and template
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") then
+		-- react to collision
+		if message.other_group == hash("char") then
+			-- move out of view
+			go.set_position(vmath.vector3(0, -10, 0))
+			-- activate buff effects
+			--physics.set_gravity(physics.get_gravity()/3)
+			--timer.delay(10, false, end_buff)
+		end
+	end
+end
+
+function end_buff(self)
+	--physics.set_gravity(physics.get_gravity()*3)
+	go.delete(".")
+end
