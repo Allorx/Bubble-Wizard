@@ -7,6 +7,7 @@ go.property("final_counter", 3)
 function init(self)
 	timer.delay(1.5, false, enable_trigger)
 	self.bolt_id = go.get_id("/bolt")
+	go.set("#model", "tint", vmath.vector4(math.random(), math.random(), math.random(), 1))
 end
 
 function update(self, dt)

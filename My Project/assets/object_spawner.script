@@ -4,37 +4,36 @@ go.property("final_scale", vmath.vector3(2, 2, 2))
 go.property("init_offset", vmath.vector3(0, 0, -4))
 go.property("min_velocity", 0.1)
 -- for setting to interactable pos
-go.property("set_delay", 10)
+go.property("set_delay", 3)
+go.property("spawn_delay", 7)
 
 function init(self)
 	math.randomseed(os.time())
 	-- initial spawn
-	local id = factory.create("#enemy_factory", self.spawn_pos, go.get_world_rotation(), nil, self.init_scale)
+	local id = factory.create("#enemy_factory", self.spawn_pos, vmath.quat_rotation_y(math.random(0,3)+math.random()), nil, self.init_scale)
 	local pos = go.get_world_position() + self.init_offset
 	-- so gravity does not stack up velocity on enemy when animation is running increase damping and decrease when done animating
 	local url = msg.url("main", id, "collisionobject")
 	go.set(url, "linear_damping", 1)
-	
-	go.animate(id, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INOUTQUART, 2, 0, function()go.set(url, "linear_damping", 0)end)
-	go.animate(id, "scale", go.PLAYBACK_ONCE_FORWARD, self.final_scale, go.EASING_INOUTQUART, 2)
+	set_new(self, id, pos, url)
 end
 
 function spawn_new(self)
-	local id = factory.create("#enemy_factory", self.spawn_pos, go.get_world_rotation(), {velocity = math.random(-1,1)*math.random()}, self.init_scale)
+	local id = factory.create("#enemy_factory", self.spawn_pos, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = math.random(-1,1)*math.random()}, self.init_scale)
 	local pos = go.get_world_position() + vmath.rotate(vmath.quat_rotation_y(math.random(0,3) + math.random()), self.init_offset)
 	-- so gravity does not stack up velocity on enemy when animation is running disable and re-enable gravity when done animating
 	local url = msg.url("main", id, "collisionobject")
 	go.set(url, "linear_damping", 1)
-	go.animate(id, "scale", go.PLAYBACK_ONCE_FORWARD, self.final_scale/2, go.EASING_OUTCIRC, self.set_delay, 0, function()set_new(self, id, pos, url)end)
+	go.animate(id, "scale", go.PLAYBACK_ONCE_FORWARD, self.final_scale/2, go.EASING_OUTCIRC, self.spawn_delay, 0, function()set_new(self, id, pos, url)end)
 end
 
 function set_new(self, id, pos, url)
-	go.animate(id, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INOUTQUART, 2, 0, function()go.set(url, "linear_damping", 0)end)
-	go.animate(id, "scale", go.PLAYBACK_ONCE_FORWARD, self.final_scale, go.EASING_INOUTQUART, 2)
+	go.animate(id, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INOUTQUART, self.set_delay, 0, function()go.set(url, "linear_damping", 0)end)
+	go.animate(id, "scale", go.PLAYBACK_ONCE_FORWARD, self.final_scale, go.EASING_INOUTQUART, self.set_delay)
 end
 
 function spawn_buff(self, pos)
-	if math.random() > 0.65 then
+	if math.random() > 0.7 then
 		-- select a random buff to spawn at pos
 		-- currently just 0
 		factory.create("#buff_factory" .. 0, pos, go.get_world_rotation())
@@ -45,8 +44,8 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("create_enemy") then
 		local counter = message.select_counter + 1
 		local position = message.set_position
-		factory.create("#enemy_factory", position, go.get_world_rotation(sender), {velocity = self.min_velocity + math.random()*math.random(), counter = counter}, go.get_world_scale(sender)/(counter+1))
-		factory.create("#enemy_factory", position, go.get_world_rotation(sender), {velocity = -self.min_velocity - math.random()*math.random(), counter = counter}, go.get_world_scale(sender)/(counter+1))
+		factory.create("#enemy_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = self.min_velocity + math.random()*math.random(), counter = counter}, go.get_world_scale(sender)/2)
+		factory.create("#enemy_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = -self.min_velocity - math.random()*math.random(), counter = counter}, go.get_world_scale(sender)/2)
 		spawn_buff(self, position)
 	elseif message_id == hash("spawn_new") then
 		spawn_new(self)

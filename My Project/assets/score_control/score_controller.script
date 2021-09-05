@@ -1,4 +1,4 @@
-go.property("spawn_interval", 30)
+go.property("spawn_interval", 40)
 
 local function load_highscore()
 	local filename = sys.get_save_file("sys_save_load", "highscore")
