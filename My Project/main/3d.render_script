@@ -63,8 +63,8 @@ function update(self)
     render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
     render.set_view(self.view)
 
-    render.set_depth_mask(false)
-    render.disable_state(render.STATE_DEPTH_TEST)
+    --render.set_depth_mask(false)
+    render.enable_state(render.STATE_DEPTH_TEST)
     render.disable_state(render.STATE_STENCIL_TEST)
     render.enable_state(render.STATE_BLEND)
     render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
@@ -78,10 +78,10 @@ function update(self)
 
     -- render models
     --
-    render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
+    --render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
     render.enable_state(render.STATE_CULL_FACE)
-    render.enable_state(render.STATE_DEPTH_TEST)
-    render.set_depth_mask(true)
+    --render.enable_state(render.STATE_DEPTH_TEST)
+    --render.set_depth_mask(true)
     render.draw(self.model_pred)
     
     -- render GUI
