@@ -1,9 +1,9 @@
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/test/cylinder.dae\"\n"
+  data: "mesh: \"/assets/cauldron/cauldron.dae\"\n"
   "material: \"/assets/test/shaders/unlit.material\"\n"
-  "textures: \"/assets/test/purple_checkerboard.jpg\"\n"
+  "textures: \"/assets/enemies/SoapAlbedo.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"

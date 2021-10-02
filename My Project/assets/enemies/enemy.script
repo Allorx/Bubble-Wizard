@@ -28,7 +28,7 @@ function on_message(self, message_id, message, sender)
 			try_me(self)
 		elseif message.other_group == hash("char") then
 			-- collided with char
-			print("Lose", message.other_group)
+			msg.post("new:/main#loader", "reset")
 		end
 	end
 end

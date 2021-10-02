@@ -3,7 +3,7 @@ embedded_components {
   type: "model"
   data: "mesh: \"/assets/test/cylinder.dae\"\n"
   "material: \"/assets/test/shaders/unlit.material\"\n"
-  "textures: \"/assets/test/white.jpg\"\n"
+  "textures: \"/assets/test/purple_checkerboard.jpg\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"

@@ -1,0 +1,14 @@
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	msg.post("#main", "load")
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash('reset') then
+		msg.post("#main", "unload")
+	elseif message_id == hash('proxy_unloaded') then
+		msg.post("#main", "load")
+	elseif message_id == hash('proxy_loaded') then 
+		msg.post(sender, 'enable')
+	end
+end
