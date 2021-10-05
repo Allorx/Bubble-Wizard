@@ -4,6 +4,7 @@ instances {
   prototype: "/assets/char/char.go"
   children: "bolt"
   children: "camera"
+  children: "char_model"
   children: "score_controller"
   position {
     x: 0.0
@@ -47,7 +48,7 @@ instances {
   prototype: "/assets/floor.go"
   position {
     x: 0.0
-    y: -1.0
+    y: -0.5
     z: 0.0
   }
   rotation {
@@ -57,9 +58,9 @@ instances {
     w: 0.70710677
   }
   scale3 {
-    x: 4.0
+    x: 15.0
     y: 0.05
-    z: 4.0
+    z: 15.0
   }
 }
 instances {
@@ -67,7 +68,7 @@ instances {
   prototype: "/assets/cauldron.go"
   position {
     x: 0.0
-    y: -0.7
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -140,6 +141,26 @@ instances {
     x: 0.4
     y: 2.0
     z: 0.4
+  }
+}
+instances {
+  id: "char_model"
+  prototype: "/assets/char/char_model.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 4.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 scale_along_z: 0

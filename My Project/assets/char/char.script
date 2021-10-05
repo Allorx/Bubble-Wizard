@@ -1,5 +1,6 @@
 local velocity_addition = 10
 local velocity = 0
+local max_velocity = 100
 local tap_delay = 0.2
 local friction = 0.1
 local velocity_mult = 2.6
@@ -19,6 +20,9 @@ function init(self)
 end
 
 function update(self, dt)
+	if velocity > max_velocity then
+		velocity = max_velocity
+	end
 	rotate(".", rotation() + velocity * dt)
 	velocity = velocity*(1-friction)
 end
@@ -36,9 +40,15 @@ function on_input(self, action_id, action)
 			if action.x < 640/2 then
 				-- rotate left
 				velocity = (velocity-velocity_addition)*velocity_mult
+				go.set("/char_model", "rotation", vmath.quat_rotation_y(-90))
+				go.set("/char_model", "scale.y", 1)
+				go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.8, go.EASING_LINEAR, 0.2)
 			else
 				-- rotate right
 				velocity = (velocity+velocity_addition)*velocity_mult
+				go.set("/char_model", "rotation", vmath.quat_rotation_y(90))
+				go.set("/char_model", "scale.y", 1)
+				go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.8, go.EASING_LINEAR, 0.2)
 			end
 		end
 	end
@@ -52,6 +62,8 @@ end
 
 function attack(self)
 	self.can_touch = false
+	go.set("/char_model", "rotation", vmath.quat_rotation_y(0))
+	go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.8, go.EASING_INOUTELASTIC, attack_length)
 	go.set(self.bolt_id, "position.y", attack_offset)
 	go.animate(self.bolt_id, "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y, go.EASING_LINEAR, attack_length, 0, end_attack)
 end

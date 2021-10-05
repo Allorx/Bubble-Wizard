@@ -15,6 +15,7 @@ uniform mediump mat4 mtx_normal;
 varying highp vec4 var_position;
 varying mediump vec3 var_normal;
 varying mediump vec2 var_texcoord0;
+varying mediump float var_dist;
 
 void main()
 {
@@ -23,5 +24,7 @@ void main()
     var_texcoord0 = texcoord0;
     var_normal = normalize((mtx_normal * vec4(normal, 0.0)).xyz);
     gl_Position = mtx_proj * p;
+
+    var_dist = gl_Position.z;
 }
 

@@ -3,7 +3,7 @@ embedded_components {
   type: "model"
   data: "mesh: \"/assets/cauldron/cauldron.dae\"\n"
   "material: \"/assets/test/shaders/unlit.material\"\n"
-  "textures: \"/assets/enemies/SoapAlbedo.png\"\n"
+  "textures: \"/builtins/graphics/particle_blob.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"

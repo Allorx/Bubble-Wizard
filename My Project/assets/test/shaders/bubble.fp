@@ -14,18 +14,19 @@ void main()
 {   
     vec4 color = texture2D(tex0, var_texcoord0.xy);
     vec3 viewDirectionW = normalize(camera_position.xyz - var_position.xyz);
+    
     // Fresnel
     float fresnelTerm = dot(viewDirectionW, var_normal);
     fresnelTerm = clamp(1.0 - fresnelTerm, 0., 1.);
 
     // Fog
-    /*float fog_start = 15;
-    float fog_end = 20;
+    float fog_start = 15;
+    float fog_end = 25;
     float fog_factor = (var_dist-fog_start)/(fog_end-fog_start);
     float fog = clamp(fog_factor, 0., 1.);
-    */
 
-    gl_FragColor = vec4(color.rgb*tint.xyz, fresnelTerm*tint.w);
+    gl_FragColor = vec4(color.rgb*tint.xyz+fog, fresnelTerm*tint.w);
+    // alt: gl_FragColor = vec4(color.rgb*tint.xyz, fresnelTerm*tint.w-fog);
 }
 
 // add refraction?
