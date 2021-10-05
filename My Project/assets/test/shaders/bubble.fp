@@ -21,7 +21,7 @@ void main()
 
     // Fog
     float fog_start = 15;
-    float fog_end = 25;
+    float fog_end = 20;
     float fog_factor = (var_dist-fog_start)/(fog_end-fog_start);
     float fog = clamp(fog_factor, 0., 1.);
 
