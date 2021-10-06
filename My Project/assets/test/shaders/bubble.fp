@@ -16,7 +16,10 @@ void main()
     float fresnelTerm = dot(viewDirectionW, var_normal);
     fresnelTerm = clamp(1.0 - fresnelTerm, 0., 1.);
 
-    gl_FragColor = vec4(color.rgb*tint.xyz, fresnelTerm*tint.w);
+    //fog
+    vec3 fog = color.rgb + var_position.z * var_position.z * 0.001;
+
+    gl_FragColor = vec4(fog*tint.xyz, fresnelTerm*tint.w);
 }
 
 // add refraction?

@@ -4,8 +4,8 @@ go.property("enabled", false)
 go.property("counter", 0)
 go.property("final_counter", 3)
 
-local max_height = 8
-local vel_reduction = vmath.vector3(0, -2, 0)
+local max_height = 7
+local vel_reduction = vmath.vector3(0, -0.05, 0)
 
 function init(self)
 	timer.delay(1.5, false, enable_trigger)
@@ -18,12 +18,9 @@ function update(self, dt)
 	local new_pos = vmath.rotate(vmath.quat_rotation_y(self.velocity * dt), go.get_world_position())
 	go.set_position(new_pos)
 
-	--limit bounce to max_height
-	if go.get(".", "position.y") > max_height and not b_damp then
+	--if above max_height and going up reduce velocity
+	if go.get(".", "position.y") > max_height and go.get("#collisionobject", "linear_velocity").y > 0 then
 		go.set("#collisionobject", "linear_velocity", go.get("#collisionobject", "linear_velocity") + vel_reduction)
-		b_damp = true
-	elseif go.get(".", "position.y") < max_height and b_damp then
-		b_damp = false
 	end
 end
 
