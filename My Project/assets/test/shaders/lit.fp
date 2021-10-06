@@ -11,11 +11,14 @@ void main()
     vec4 color = texture2D(tex0, var_texcoord0.xy);
 
     // Diffuse light calculations
-    vec3 ambient_light = vec3(0.5);
+    vec3 ambient_light = vec3(0.7);
     vec3 diff_light = vec3(normalize(var_light.xyz - var_position.xyz));
     diff_light = max(dot(var_normal,diff_light), 0.0) + ambient_light;
     diff_light = clamp(diff_light, 0.0, 1.0);
 
-    gl_FragColor = vec4(color.rgb*diff_light*tint.xyz, tint.w);
+    //fog
+    vec3 fog = mix(color.rgb, tint.xyz, -var_position.z*var_position.z*var_position.z*0.00003);
+
+    gl_FragColor = vec4(fog*diff_light, tint.w);
 }
 

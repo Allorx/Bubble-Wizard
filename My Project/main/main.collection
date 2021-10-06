@@ -24,26 +24,6 @@ instances {
   }
 }
 instances {
-  id: "background"
-  prototype: "/assets/background/background.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: -30.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 0.5
-    y: 0.5
-    z: 1.0
-  }
-}
-instances {
   id: "floor"
   prototype: "/assets/floor.go"
   position {
@@ -108,7 +88,7 @@ instances {
   prototype: "/assets/score_control/score_controller.go"
   position {
     x: 0.0
-    y: 4.0
+    y: 6.0
     z: 0.0
   }
   rotation {
@@ -129,7 +109,7 @@ instances {
   position {
     x: 0.0
     y: -40.0
-    z: 4.0
+    z: 5.0
   }
   rotation {
     x: 0.0
@@ -149,7 +129,7 @@ instances {
   position {
     x: 0.0
     y: 0.0
-    z: 4.0
+    z: 5.0
   }
   rotation {
     x: 0.0
@@ -190,14 +170,14 @@ embedded_instances {
   ""
   position {
     x: 0.0
-    y: 7.0
-    z: 16.0
+    y: 14.0
+    z: 18.0
   }
   rotation {
-    x: 0.0
+    x: -0.13052619
     y: 0.0
     z: 0.0
-    w: 1.0
+    w: 0.9914449
   }
   scale3 {
     x: 1.0

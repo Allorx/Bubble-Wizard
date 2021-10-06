@@ -51,11 +51,12 @@ function init(self)
     -- msg.post("@render:", "use_fixed_projection", { near = -1, far = 1, zoom = 2 })
     -- msg.post("@render:", "use_fixed_fit_projection", { near = -1, far = 1 })
     self.near = -1
-    self.far = 1
+    self.far = 0
     self.projection_fn = stretch_projection
 end
 
 function update(self)
+    render.enable_state(render.STATE_DEPTH_TEST)
     render.set_depth_mask(true)
     render.set_stencil_mask(0xff)
     render.clear({[render.BUFFER_COLOR_BIT] = self.clear_color, [render.BUFFER_DEPTH_BIT] = 1, [render.BUFFER_STENCIL_BIT] = 0})
@@ -63,9 +64,8 @@ function update(self)
     render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
     render.set_view(self.view)
 
-    --render.set_depth_mask(false)
-    render.enable_state(render.STATE_DEPTH_TEST)
-    render.disable_state(render.STATE_STENCIL_TEST)
+    render.set_depth_mask(false)
+    render.enable_state(render.STATE_STENCIL_TEST)
     render.enable_state(render.STATE_BLEND)
     render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
     render.disable_state(render.STATE_CULL_FACE)
@@ -78,21 +78,21 @@ function update(self)
 
     -- render models
     --
-    --render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
+    render.set_depth_mask(true)
     render.enable_state(render.STATE_CULL_FACE)
-    --render.enable_state(render.STATE_DEPTH_TEST)
-    --render.set_depth_mask(true)
     render.draw(self.model_pred)
+    render.disable_state(render.STATE_CULL_FACE)
+    render.disable_state(render.STATE_DEPTH_TEST)
+    render.set_depth_mask(false)
     
     -- render GUI
     --
     render.set_view(vmath.matrix4())
     render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width(), 0, render.get_window_height(), -1, 1))
 
-    render.enable_state(render.STATE_STENCIL_TEST)
     render.draw(self.gui_pred)
     render.draw(self.text_pred)
-    render.disable_state(render.STATE_STENCIL_TEST)
+    render.disable_state(render.STATE_BLEND)
 end
 
 function on_message(self, message_id, message)

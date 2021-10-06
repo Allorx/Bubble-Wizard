@@ -8,8 +8,9 @@ local max_height = 7
 local vel_reduction = vmath.vector3(0, -0.05, 0)
 
 function init(self)
-	timer.delay(1.5, false, enable_trigger)
+	timer.delay(0.5, false, enable_trigger)
 	self.bolt_id = go.get_id("/bolt")
+	--choose colour
 	go.set("#model", "tint", vmath.vector4(math.random(), math.random(), math.random(), 1))
 end
 

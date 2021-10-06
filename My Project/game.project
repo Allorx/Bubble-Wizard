@@ -16,7 +16,7 @@ input_method = HiddenInputField
 debuggable = 1
 
 [project]
-title = My Project
+title = Bubble Wizard
 developer = Misty Blue Tech Ltd
 
 [physics]

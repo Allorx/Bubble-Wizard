@@ -1,10 +1,13 @@
 embedded_components {
-  id: "background"
-  type: "sprite"
-  data: "tile_set: \"/assets/background/background.tilesource\"\n"
-  "default_animation: \"anim\"\n"
-  "material: \"/builtins/materials/sprite.material\"\n"
-  "blend_mode: BLEND_MODE_ALPHA\n"
+  id: "model"
+  type: "model"
+  data: "mesh: \"/assets/background/inverted_cube.dae\"\n"
+  "material: \"/assets/test/shaders/unlit.material\"\n"
+  "textures: \"/assets/test/white.jpg\"\n"
+  "skeleton: \"\"\n"
+  "animations: \"\"\n"
+  "default_animation: \"\"\n"
+  "name: \"unnamed\"\n"
   ""
   position {
     x: 0.0
