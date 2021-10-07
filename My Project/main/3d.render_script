@@ -90,21 +90,23 @@ function update(self)
 
     render.enable_state(render.STATE_BLEND)
     render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
-    render.disable_state(render.STATE_CULL_FACE)
     render.set_projection(get_projection(self))
 
     -- render tiles/particles
-    render.set_depth_mask(false)
-    render.disable_state(render.STATE_DEPTH_TEST)
+    --render.set_depth_mask(false)
+    --render.disable_state(render.STATE_DEPTH_TEST)
+    render.set_depth_mask(true)
+    render.enable_state(render.STATE_DEPTH_TEST)
     render.disable_state(render.STATE_STENCIL_TEST)
+    render.disable_state(render.STATE_CULL_FACE)
     
     render.draw(self.tile_pred)
     render.draw(self.particle_pred)
     
     -- render models
     render.enable_state(render.STATE_CULL_FACE)
-    render.enable_state(render.STATE_DEPTH_TEST)
     render.set_depth_mask(true)
+    render.enable_state(render.STATE_DEPTH_TEST)
     
     render.draw(self.model_pred)
     render.draw_debug3d()

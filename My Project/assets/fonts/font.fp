@@ -24,6 +24,10 @@ void main()
     lowp vec4 outline_color    = var_layer_mask.y * vec4(var_outline_color.xyz, 1.0) * outline_alpha;
     lowp vec4 shadow_color     = var_layer_mask.z * vec4(var_shadow_color.xyz, 1.0) * shadow_alpha;
 
-    gl_FragColor = vec4(face_color.xyz + outline_color.xyz + shadow_color.xyz, face_color.x);
+    if(face_alpha < 0.5){
+        discard;
+    }
+
+    gl_FragColor = face_color + outline_color + shadow_color;
     
 }
