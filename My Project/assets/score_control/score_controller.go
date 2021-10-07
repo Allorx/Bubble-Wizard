@@ -52,8 +52,8 @@ embedded_components {
   "blend_mode: BLEND_MODE_ALPHA\n"
   "line_break: false\n"
   "text: \"0\"\n"
-  "font: \"/assets/score_control/50Mont.font\"\n"
-  "material: \"/builtins/fonts/label.material\"\n"
+  "font: \"/assets/fonts/50Mont.font\"\n"
+  "material: \"/assets/fonts/label.material\"\n"
   ""
   position {
     x: 0.0
@@ -106,8 +106,8 @@ embedded_components {
   "blend_mode: BLEND_MODE_ALPHA\n"
   "line_break: false\n"
   "text: \"0\"\n"
-  "font: \"/assets/score_control/50Mont.font\"\n"
-  "material: \"/builtins/fonts/label.material\"\n"
+  "font: \"/assets/fonts/50Mont.font\"\n"
+  "material: \"/assets/fonts/label.material\"\n"
   ""
   position {
     x: 0.0

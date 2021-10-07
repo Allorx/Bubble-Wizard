@@ -11,8 +11,8 @@ void main()
     vec4 color = texture2D(tex0, var_texcoord0.xy);
 
     //fog
-    vec3 fog = mix(color.rgb, tint.xyz, -var_position.z*var_position.z*var_position.z*0.00003);
+    //vec3 fog = mix(color.rgb, tint.xyz, -var_position.z*var_position.z*var_position.z*0.00003);
     
-    gl_FragColor = vec4(fog, tint.w);
+    gl_FragColor = vec4(color.rgb*tint.xyz, tint.w);
 }
 

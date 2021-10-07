@@ -1,5 +1,5 @@
-font: "/assets/Montserrat/Montserrat-Regular.ttf"
-material: "/builtins/fonts/font.material"
+font: "/assets/fonts/Montserrat/Montserrat-Regular.ttf"
+material: "/assets/fonts/label.material"
 size: 50
 antialias: 1
 alpha: 1.0
