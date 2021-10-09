@@ -49,7 +49,7 @@ embedded_components {
   id: "model"
   type: "model"
   data: "mesh: \"/assets/test/cylinder.dae\"\n"
-  "material: \"/assets/test/shaders/unlit.material\"\n"
+  "material: \"/assets/shaders/lit.material\"\n"
   "textures: \"/assets/test/purple_checkerboard.jpg\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"

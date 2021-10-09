@@ -67,7 +67,7 @@ embedded_components {
   id: "model"
   type: "model"
   data: "mesh: \"/assets/test/sphere.dae\"\n"
-  "material: \"/assets/test/shaders/bubble.material\"\n"
+  "material: \"/assets/shaders/bubble.material\"\n"
   "textures: \"/assets/test/white.jpg\"\n"
   "textures: \"/assets/enemies/SoapAlbedo.png\"\n"
   "skeleton: \"\"\n"

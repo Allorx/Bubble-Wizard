@@ -8,12 +8,11 @@ shared_state = 1
 [display]
 width = 640
 height = 960
-fullscreen = 1
 high_dpi = 1
 
 [android]
 input_method = HiddenInputField
-debuggable = 1
+immersive_mode = 1
 
 [project]
 title = Bubble Wizard

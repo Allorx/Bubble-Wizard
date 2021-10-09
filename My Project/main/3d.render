@@ -1,1 +1,5 @@
 script: "/main/3d.render_script"
+materials {
+  name: "depth_mat"
+  material: "/assets/shaders/depth.material"
+}

@@ -144,8 +144,8 @@ instances {
   }
 }
 instances {
-  id: "buffer"
-  prototype: "/main/buffer.go"
+  id: "buffer_blur"
+  prototype: "/assets/shaders/post/buffer_blur.go"
   position {
     x: 0.0
     y: 0.0
@@ -161,6 +161,46 @@ instances {
     x: 1.0
     y: 1.0
     z: 1.0
+  }
+}
+instances {
+  id: "depth"
+  prototype: "/assets/shaders/depth.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "background"
+  prototype: "/assets/background/background.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 15.0
+    y: 15.0
+    z: 15.0
   }
 }
 scale_along_z: 0

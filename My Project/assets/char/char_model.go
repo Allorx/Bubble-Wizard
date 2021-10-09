@@ -51,7 +51,7 @@ embedded_components {
   id: "model"
   type: "model"
   data: "mesh: \"/assets/char/wizard.dae\"\n"
-  "material: \"/assets/test/shaders/lit.material\"\n"
+  "material: \"/assets/shaders/lit.material\"\n"
   "textures: \"/assets/test/white.jpg\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"

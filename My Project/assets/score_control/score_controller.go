@@ -53,7 +53,7 @@ embedded_components {
   "line_break: false\n"
   "text: \"0\"\n"
   "font: \"/assets/fonts/50Mont.font\"\n"
-  "material: \"/assets/fonts/label.material\"\n"
+  "material: \"/assets/shaders/font.material\"\n"
   ""
   position {
     x: 0.0
@@ -107,7 +107,7 @@ embedded_components {
   "line_break: false\n"
   "text: \"0\"\n"
   "font: \"/assets/fonts/50Mont.font\"\n"
-  "material: \"/assets/fonts/label.material\"\n"
+  "material: \"/assets/shaders/font.material\"\n"
   ""
   position {
     x: 0.0

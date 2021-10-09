@@ -17,7 +17,7 @@ embedded_components {
   id: "model"
   type: "model"
   data: "mesh: \"/builtins/assets/meshes/cube.dae\"\n"
-  "material: \"/assets/test/shaders/unlit.material\"\n"
+  "material: \"/assets/shaders/lit.material\"\n"
   "textures: \"/assets/test/white.jpg\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
