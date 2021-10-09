@@ -14,12 +14,12 @@ void main()
 	vec2 texSize  = vec2(float(textureSize(original, 0).x), float(textureSize(original, 0).y));
 
 	//amount to spread blur without sampling more fragments
-	float separation = 2.0;
+	float separation = 2.5;
 
 	float count = 0.0;
 	//blur kernel size - increases blur
-	for (int i = -4; i <= 4; ++i) {
-		for (int j = -4; j <= 4; ++j) {
+	for (int i = -3; i <= 3; ++i) {
+		for (int j = -3; j <= 3; ++j) {
 			color_blur.rgb += texture2D(original, (gl_FragCoord.xy + vec2(i, j)*separation)/texSize).rgb;
 			count += 1.0;
 		}

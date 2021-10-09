@@ -15,7 +15,7 @@
         
         android:label="Bubble Wizard" android:hasCode="true"
         android:name="android.support.multidex.MultiDexApplication"
-        android:debuggable="true">
+        android:debuggable="false">
 
         <meta-data android:name="android.max_aspect" android:value="2.1" />
         <meta-data android:name="android.notch_support" android:value="true"/>
