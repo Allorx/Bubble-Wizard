@@ -79,6 +79,7 @@ function init(self)
 end
 
 function update(self)
+    -- normal render to target
     render.enable_render_target(self.target)
     
     render.set_depth_mask(true)
@@ -118,7 +119,7 @@ function update(self)
     
     render.disable_render_target(self.target)
 
-    -- depth render target
+    -- render to target_depth using depth_mat
     render.enable_render_target(self.target_depth)
     
     render.set_depth_mask(true)
@@ -142,7 +143,7 @@ function update(self)
 
     render.disable_render_target(self.target_depth)
 
-    -- draw from buffer_blur and buffer_depth
+    -- draw buffer_blur to screen (has blur material) using target and target_depth as texture inputs
     render.clear({[render.BUFFER_COLOR_BIT] = self.clear_color, [render.BUFFER_DEPTH_BIT] = 1, [render.BUFFER_STENCIL_BIT] = 0})
 
     render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())

@@ -1,7 +1,7 @@
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/background/inverted_cube.dae\"\n"
+  data: "mesh: \"/assets/misc/inverted_cube.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
   "textures: \"/assets/test/white.jpg\"\n"
   "skeleton: \"\"\n"

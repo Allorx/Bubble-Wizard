@@ -25,7 +25,7 @@ instances {
 }
 instances {
   id: "floor"
-  prototype: "/assets/floor.go"
+  prototype: "/assets/misc/floor.go"
   position {
     x: 0.0
     y: -0.5
@@ -45,7 +45,7 @@ instances {
 }
 instances {
   id: "cauldron"
-  prototype: "/assets/cauldron.go"
+  prototype: "/assets/cauldron/cauldron.go"
   position {
     x: 0.0
     y: 0.0
@@ -185,7 +185,7 @@ instances {
 }
 instances {
   id: "background"
-  prototype: "/assets/background/background.go"
+  prototype: "/assets/misc/background.go"
   position {
     x: 0.0
     y: 0.0
