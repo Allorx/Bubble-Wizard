@@ -6,6 +6,8 @@ function on_message(self, message_id, message, sender)
 			-- move out of view
 			go.set_position(vmath.vector3(0, -10, 0))
 			-- activate buff effects
+			
+			
 			timer.delay(5, false, end_buff)
 		end
 	end

@@ -1,4 +1,4 @@
-font: "/assets/fonts/Montserrat/Montserrat-Regular.ttf"
+font: "/assets/fonts/Montserrat/Montserrat-Medium.ttf"
 material: "/assets/shaders/font.material"
 size: 50
 antialias: 1

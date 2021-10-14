@@ -92,15 +92,6 @@ function update(self)
     render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
     render.disable_state(render.STATE_CULL_FACE)
     render.set_projection(get_projection(self))
-
-    -- render tiles/particles
-    render.set_depth_mask(false)
-    render.disable_state(render.STATE_DEPTH_TEST)
-    render.disable_state(render.STATE_STENCIL_TEST)
-    
-    render.draw(self.tile_pred)
-    render.draw(self.particle_pred)
-    render.draw_debug3d()
     
     -- render models
     render.set_depth_mask(true)
@@ -108,15 +99,6 @@ function update(self)
     render.enable_state(render.STATE_DEPTH_TEST)
     render.draw(self.model_pred)
 
-    -- render GUI
-    render.set_view(vmath.matrix4())
-    render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width(), 0, render.get_window_height(), -1, 1))
-
-    render.enable_state(render.STATE_STENCIL_TEST)
-    render.draw(self.gui_pred)
-    render.draw(self.text_pred)
-    render.disable_state(render.STATE_STENCIL_TEST)
-    
     render.disable_render_target(self.target)
 
     -- render to target_depth using depth_mat
@@ -157,6 +139,34 @@ function update(self)
     render.draw(self.buffer_blur_pred)
     render.disable_texture(0, self.target)
     render.disable_texture(1, self.target_depth)
+
+    -- render tiles/particles
+    render.set_depth_mask(true)
+    render.set_stencil_mask(0xff)
+    render.set_viewport(0, 0, render.get_window_width(), render.get_window_height())
+    render.set_view(self.view)
+
+    render.enable_state(render.STATE_BLEND)
+    render.set_blend_func(render.BLEND_SRC_ALPHA, render.BLEND_ONE_MINUS_SRC_ALPHA)
+    render.disable_state(render.STATE_CULL_FACE)
+    render.set_projection(get_projection(self))
+    
+    render.set_depth_mask(false)
+    render.disable_state(render.STATE_DEPTH_TEST)
+    render.disable_state(render.STATE_STENCIL_TEST)
+
+    render.draw(self.tile_pred)
+    render.draw(self.particle_pred)
+    render.draw_debug3d()
+
+    -- render GUI
+    render.set_view(vmath.matrix4())
+    render.set_projection(vmath.matrix4_orthographic(0, render.get_window_width(), 0, render.get_window_height(), -1, 1))
+
+    render.enable_state(render.STATE_STENCIL_TEST)
+    render.draw(self.gui_pred)
+    render.draw(self.text_pred)
+    render.disable_state(render.STATE_STENCIL_TEST)
 end
 
 function on_message(self, message_id, message)

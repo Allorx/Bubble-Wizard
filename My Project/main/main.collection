@@ -88,8 +88,8 @@ instances {
   prototype: "/assets/score_control/score_controller.go"
   position {
     x: 0.0
-    y: 8.0
-    z: 0.0
+    y: 0.0
+    z: 8.0
   }
   rotation {
     x: 0.0
