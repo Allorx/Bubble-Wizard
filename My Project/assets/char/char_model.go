@@ -52,7 +52,7 @@ embedded_components {
   type: "model"
   data: "mesh: \"/assets/char/wizard.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/test/white.jpg\"\n"
+  "textures: \"/assets/char/Wizard_base.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
