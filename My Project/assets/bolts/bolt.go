@@ -26,7 +26,7 @@ embedded_components {
   "    count: 2\n"
   "  }\n"
   "  data: 0.1\n"
-  "  data: 13.0\n"
+  "  data: 23.0\n"
   "}\n"
   "linear_damping: 0.0\n"
   "angular_damping: 0.0\n"
@@ -48,9 +48,9 @@ embedded_components {
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/test/cylinder.dae\"\n"
-  "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/test/purple_checkerboard.jpg\"\n"
+  data: "mesh: \"/assets/bolts/bolt.dae\"\n"
+  "material: \"/assets/shaders/unlit.material\"\n"
+  "textures: \"/assets/bolts/Bolt_base.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
@@ -59,12 +59,12 @@ embedded_components {
   position {
     x: 0.0
     y: 7.0
-    z: 0.0
+    z: 1.0
   }
   rotation {
     x: 0.0
-    y: 0.0
+    y: -0.70710677
     z: 0.0
-    w: 1.0
+    w: 0.70710677
   }
 }

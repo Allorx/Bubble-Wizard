@@ -119,13 +119,14 @@ instances {
   }
   scale3 {
     x: 0.4
-    y: 2.0
+    y: 1.0
     z: 0.4
   }
 }
 instances {
   id: "char_model"
   prototype: "/assets/char/char_model.go"
+  children: "staff"
   position {
     x: 0.0
     y: 0.0
@@ -201,6 +202,26 @@ instances {
     x: 15.0
     y: 15.0
     z: 15.0
+  }
+}
+instances {
+  id: "staff"
+  prototype: "/assets/staffs/staff.go"
+  position {
+    x: -1.5
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: -0.12426139
+    y: -0.24901995
+    z: -0.018469552
+    w: 0.9603161
+  }
+  scale3 {
+    x: 2.0
+    y: 2.0
+    z: 2.0
   }
 }
 scale_along_z: 0

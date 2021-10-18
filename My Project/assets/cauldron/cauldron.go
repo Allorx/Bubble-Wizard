@@ -3,7 +3,7 @@ embedded_components {
   type: "model"
   data: "mesh: \"/assets/cauldron/cauldron.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/test/white.jpg\"\n"
+  "textures: \"/assets/cauldron/Cauldron_base.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"

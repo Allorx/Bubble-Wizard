@@ -3,7 +3,7 @@ embedded_components {
   type: "model"
   data: "mesh: \"/assets/misc/inverted_cube.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/test/white.jpg\"\n"
+  "textures: \"/assets/test/black.jpg\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
