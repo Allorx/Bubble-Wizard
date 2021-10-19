@@ -78,7 +78,7 @@ function attack(self)
 	go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_INOUTELASTIC, attack_length)
 	go.animate("/staff", "position.y", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_OUTEXPO, attack_length)
 	go.set("/bolt", "position.y", attack_offset)
-	go.animate("/bolt", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y + 8, go.EASING_INQUAD, attack_length, 0, end_attack)
+	go.animate("/bolt", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y + 8, go.EASING_LINEAR, attack_length, 0, end_attack)
 end
 
 function end_attack(self)
