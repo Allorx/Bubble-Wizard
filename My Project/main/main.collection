@@ -28,7 +28,7 @@ instances {
   prototype: "/assets/misc/floor.go"
   position {
     x: 0.0
-    y: -0.4
+    y: -0.1
     z: 0.0
   }
   rotation {
@@ -38,9 +38,9 @@ instances {
     w: 0.70710677
   }
   scale3 {
-    x: 15.0
-    y: 0.05
-    z: 15.0
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 instances {
