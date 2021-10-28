@@ -3,6 +3,7 @@ varying mediump vec2 var_texcoord0;
 
 uniform lowp sampler2D original;
 uniform lowp sampler2D original_depth;
+uniform lowp vec4 tint;
 
 void main()
 {
@@ -28,7 +29,7 @@ void main()
 
 	//mix original with blurred based on depth
 	
-	vec4 out_color = mix(color, color_blur, amount.r);
+	vec4 out_color = mix(color, color_blur + tint, amount.r);
 	
 	gl_FragColor = out_color;
 }

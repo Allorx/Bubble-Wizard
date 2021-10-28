@@ -21,6 +21,8 @@ function init(self)
 	self.staff_pos = go.get_position(self.staff_id)
 	self.staff_rot = go.get_rotation(self.staff_id)
 	self.can_touch = true
+
+	particlefx.play("/fire#fire")
 end
 
 function update(self, dt)

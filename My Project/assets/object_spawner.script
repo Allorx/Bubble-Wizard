@@ -1,4 +1,4 @@
-go.property("spawn_pos", vmath.vector3(0, 1, 0))
+go.property("spawn_pos", vmath.vector3(0, 1.5, 0))
 go.property("init_scale", vmath.vector3(0.1, 0.1, 0.1))
 go.property("final_scale", vmath.vector3(2, 2, 2))
 go.property("init_offset", vmath.vector3(0, 0, -5))
