@@ -5,7 +5,7 @@ instances {
   children: "bolt"
   children: "camera"
   children: "char_model"
-  children: "fire"
+  children: "potion_soup"
   children: "score_controller"
   position {
     x: 0.0
@@ -27,9 +27,13 @@ instances {
 instances {
   id: "floor"
   prototype: "/assets/misc/floor.go"
+  children: "candle"
+  children: "candle1"
+  children: "candle2"
+  children: "candle3"
   position {
     x: 0.0
-    y: -0.1
+    y: 0.0
     z: 0.0
   }
   rotation {
@@ -39,9 +43,9 @@ instances {
     w: 0.70710677
   }
   scale3 {
-    x: 1.5
+    x: 1.6
     y: 1.5
-    z: 1.5
+    z: 1.6
   }
 }
 instances {
@@ -49,19 +53,19 @@ instances {
   prototype: "/assets/cauldron/cauldron.go"
   position {
     x: 0.0
-    y: 0.0
+    y: -0.3
     z: 0.0
   }
   rotation {
     x: 0.0
-    y: 0.0
+    y: -0.25881904
     z: 0.0
-    w: 1.0
+    w: 0.9659258
   }
   scale3 {
-    x: 1.0
-    y: 1.0
-    z: 1.0
+    x: 1.2
+    y: 1.2
+    z: 1.2
   }
 }
 instances {
@@ -109,8 +113,8 @@ instances {
   prototype: "/assets/bolts/bolt.go"
   position {
     x: 0.0
-    y: -40.0
-    z: 5.0
+    y: -100.0
+    z: 4.0
   }
   rotation {
     x: 0.0
@@ -119,9 +123,9 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 0.4
+    x: 1.0
     y: 1.0
-    z: 0.4
+    z: 1.0
   }
 }
 instances {
@@ -131,7 +135,7 @@ instances {
   position {
     x: 0.0
     y: 0.0
-    z: 5.0
+    z: 4.0
   }
   rotation {
     x: 0.0
@@ -186,26 +190,6 @@ instances {
   }
 }
 instances {
-  id: "background"
-  prototype: "/assets/misc/background.go"
-  position {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  rotation {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-    w: 1.0
-  }
-  scale3 {
-    x: 15.0
-    y: 15.0
-    z: 15.0
-  }
-}
-instances {
   id: "staff"
   prototype: "/assets/staffs/staff.go"
   position {
@@ -226,8 +210,8 @@ instances {
   }
 }
 instances {
-  id: "fire"
-  prototype: "/assets/cauldron/fire.go"
+  id: "background"
+  prototype: "/assets/misc/background.go"
   position {
     x: 0.0
     y: 0.0
@@ -240,9 +224,109 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 1.0
+    x: 15.0
+    y: 15.0
+    z: 15.0
+  }
+}
+instances {
+  id: "potion_soup"
+  prototype: "/assets/cauldron/potion_soup.go"
+  position {
+    x: 0.0
+    y: 4.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 2.0
     y: 1.0
-    z: 1.0
+    z: 2.0
+  }
+}
+instances {
+  id: "candle"
+  prototype: "/assets/misc/candle.go"
+  position {
+    x: -0.5
+    y: -0.1
+    z: -1.625
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+  }
+}
+instances {
+  id: "candle1"
+  prototype: "/assets/misc/candle.go"
+  position {
+    x: -2.5
+    y: -0.2
+    z: 3.125
+  }
+  rotation {
+    x: 0.0
+    y: 0.087155744
+    z: 0.0
+    w: 0.9961947
+  }
+  scale3 {
+    x: 0.1
+    y: 0.1
+    z: 0.1
+  }
+}
+instances {
+  id: "candle2"
+  prototype: "/assets/misc/candle.go"
+  position {
+    x: -0.2
+    y: -0.1
+    z: -1.925
+  }
+  rotation {
+    x: 0.0
+    y: 0.34202015
+    z: 0.0
+    w: 0.9396926
+  }
+  scale3 {
+    x: 0.16
+    y: 0.3
+    z: 0.16
+  }
+}
+instances {
+  id: "candle3"
+  prototype: "/assets/misc/candle.go"
+  position {
+    x: 3.25
+    y: -0.2
+    z: 1.5
+  }
+  rotation {
+    x: 0.0
+    y: -0.25881904
+    z: 0.0
+    w: 0.9659258
+  }
+  scale3 {
+    x: 0.3
+    y: 0.3
+    z: 0.3
   }
 }
 scale_along_z: 0
@@ -272,14 +356,14 @@ embedded_instances {
   ""
   position {
     x: 0.0
-    y: 15.0
+    y: 20.0
     z: 20.0
   }
   rotation {
-    x: -0.13052619
+    x: -0.17364818
     y: 0.0
     z: 0.0
-    w: 0.9914449
+    w: 0.9848077
   }
   scale3 {
     x: 1.0

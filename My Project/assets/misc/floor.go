@@ -48,11 +48,11 @@ embedded_components {
   }
 }
 embedded_components {
-  id: "model"
+  id: "inner"
   type: "model"
-  data: "mesh: \"/assets/misc/ground.dae\"\n"
+  data: "mesh: \"/assets/misc/inner_floor.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/misc/ground_base.png\"\n"
+  "textures: \"/assets/misc/rock.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
@@ -60,7 +60,53 @@ embedded_components {
   ""
   position {
     x: 0.0
+    y: -0.5
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
     y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "outer"
+  type: "model"
+  data: "mesh: \"/assets/misc/outer_floor.dae\"\n"
+  "material: \"/assets/shaders/lit.material\"\n"
+  "textures: \"/assets/misc/rock.png\"\n"
+  "skeleton: \"\"\n"
+  "animations: \"\"\n"
+  "default_animation: \"\"\n"
+  "name: \"unnamed\"\n"
+  ""
+  position {
+    x: 0.0
+    y: -0.4
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "cauldron"
+  type: "model"
+  data: "mesh: \"/assets/misc/cauldron_floor.dae\"\n"
+  "material: \"/assets/shaders/lit.material\"\n"
+  "textures: \"/assets/misc/cauldron_floor_base.png\"\n"
+  "skeleton: \"\"\n"
+  "animations: \"\"\n"
+  "default_animation: \"\"\n"
+  "name: \"unnamed\"\n"
+  ""
+  position {
+    x: 0.0
+    y: -0.25
     z: 0.0
   }
   rotation {

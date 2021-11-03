@@ -15,7 +15,7 @@ void main()
 	vec2 texSize  = vec2(float(textureSize(original, 0).x), float(textureSize(original, 0).y));
 
 	//amount to spread blur without sampling more fragments
-	float separation = 2.5;
+	float separation = 3.0;
 
 	float count = 0.0;
 	//blur kernel size - increases blur

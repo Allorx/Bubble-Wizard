@@ -6,7 +6,7 @@ local friction = 0.1
 local velocity_mult = 1.8
 local attack_length = 0.5
 local checked_held = false
-local attack_offset = 30
+local attack_offset = 2
 local staff_attack_pos = vmath.vector3(0, 1, 1.5)
 
 function init(self)
@@ -21,8 +21,6 @@ function init(self)
 	self.staff_pos = go.get_position(self.staff_id)
 	self.staff_rot = go.get_rotation(self.staff_id)
 	self.can_touch = true
-
-	particlefx.play("/fire#fire")
 end
 
 function update(self, dt)
@@ -80,7 +78,7 @@ function attack(self)
 	go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_INOUTELASTIC, attack_length)
 	go.animate("/staff", "position.y", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_OUTEXPO, attack_length)
 	go.set("/bolt", "position.y", attack_offset)
-	go.animate("/bolt", "position.y", go.PLAYBACK_ONCE_FORWARD, go.get_position().y + 8, go.EASING_LINEAR, attack_length, 0, end_attack)
+	go.animate("/bolt", "position.y", go.PLAYBACK_ONCE_FORWARD, 25, go.EASING_LINEAR, attack_length, 0, end_attack)
 end
 
 function end_attack(self)

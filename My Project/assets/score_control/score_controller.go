@@ -121,3 +121,26 @@ embedded_components {
     w: 1.0
   }
 }
+embedded_components {
+  id: "model"
+  type: "model"
+  data: "mesh: \"/assets/test/quad_8.dae\"\n"
+  "material: \"/assets/shaders/unlit.material\"\n"
+  "textures: \"/assets/test/black.jpg\"\n"
+  "skeleton: \"\"\n"
+  "animations: \"\"\n"
+  "default_animation: \"\"\n"
+  "name: \"unnamed\"\n"
+  ""
+  position {
+    x: 0.0
+    y: -6.0
+    z: -5.0
+  }
+  rotation {
+    x: 0.70710677
+    y: 0.0
+    z: 0.0
+    w: 0.70710677
+  }
+}

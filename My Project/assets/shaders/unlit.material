@@ -1,7 +1,7 @@
-name: "bubble"
+name: "unlit"
 tags: "model"
-vertex_program: "/assets/shaders/bubble.vp"
-fragment_program: "/assets/shaders/bubble.fp"
+vertex_program: "/assets/shaders/unlit.vp"
+fragment_program: "/assets/shaders/unlit.fp"
 vertex_space: VERTEX_SPACE_LOCAL
 vertex_constants {
   name: "mtx_worldview"
