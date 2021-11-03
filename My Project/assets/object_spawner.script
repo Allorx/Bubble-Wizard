@@ -1,4 +1,4 @@
-go.property("spawn_pos", vmath.vector3(0, 1.5, 0))
+go.property("spawn_pos", vmath.vector3(0, 2, 0))
 go.property("init_scale", vmath.vector3(0.1, 0.1, 0.1))
 go.property("final_scale", vmath.vector3(2, 2, 2))
 go.property("init_offset", vmath.vector3(0, 0, -4))
@@ -10,7 +10,7 @@ go.property("spawn_delay", 7)
 function init(self)
 	math.randomseed(os.time())
 	-- initial spawn
-	local id = factory.create("#enemy_factory", self.spawn_pos, vmath.quat_rotation_y(math.random(0,3)+math.random()), nil, self.init_scale)
+	local id = factory.create("#enemy_factory", self.spawn_pos, vmath.quat_rotation_y(math.random(0,3)+math.random()), nil, self.final_scale/4)
 	local pos = go.get_world_position() + self.init_offset
 	-- so gravity does not stack up velocity on enemy when animation is running increase damping and decrease when done animating
 	local url = msg.url("main", id, "collisionobject")
@@ -28,8 +28,8 @@ function spawn_new(self)
 end
 
 function set_new(self, id, pos, url)
-	go.animate(id, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INOUTQUART, self.set_delay, 0, function()go.set(url, "linear_damping", 0)end)
-	go.animate(id, "scale", go.PLAYBACK_ONCE_FORWARD, self.final_scale, go.EASING_INOUTQUART, self.set_delay)
+	go.animate(id, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INOUTQUAD, self.set_delay, 0, function()go.set(url, "linear_damping", 0)end)
+	go.animate(id, "scale", go.PLAYBACK_ONCE_FORWARD, self.final_scale, go.EASING_INOUTCUBIC, self.set_delay)
 end
 
 function spawn_buff(self, pos)
