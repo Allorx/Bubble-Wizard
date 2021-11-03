@@ -162,7 +162,7 @@ emitters {
     key: PARTICLE_KEY_RED
     points {
       x: 0.0
-      y: 1.0300008
+      y: 2.512949
       t_x: 1.0
       t_y: 0.0
     }
@@ -177,7 +177,7 @@ emitters {
     key: PARTICLE_KEY_GREEN
     points {
       x: 0.0
-      y: 1.0517999
+      y: 1.0164917
       t_x: 1.0
       t_y: 0.0
     }
@@ -192,7 +192,7 @@ emitters {
     key: PARTICLE_KEY_BLUE
     points {
       x: 0.0
-      y: 1.0350525
+      y: 1.3175188
       t_x: 1.0
       t_y: 0.0
     }
@@ -409,7 +409,7 @@ emitters {
     key: PARTICLE_KEY_RED
     points {
       x: 0.0
-      y: 1.0300008
+      y: 2.512949
       t_x: 1.0
       t_y: 0.0
     }
@@ -424,7 +424,7 @@ emitters {
     key: PARTICLE_KEY_GREEN
     points {
       x: 0.0
-      y: 1.0517999
+      y: 1.0164917
       t_x: 1.0
       t_y: 0.0
     }
@@ -439,7 +439,7 @@ emitters {
     key: PARTICLE_KEY_BLUE
     points {
       x: 0.0
-      y: 1.0350525
+      y: 1.3175188
       t_x: 1.0
       t_y: 0.0
     }

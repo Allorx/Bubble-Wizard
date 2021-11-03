@@ -299,9 +299,9 @@ instances {
   }
   rotation {
     x: 0.0
-    y: 0.34202015
+    y: 0.57357645
     z: 0.0
-    w: 0.9396926
+    w: 0.81915206
   }
   scale3 {
     x: 0.16
@@ -313,20 +313,20 @@ instances {
   id: "candle3"
   prototype: "/assets/misc/candle.go"
   position {
-    x: 3.25
+    x: 3.0
     y: -0.2
     z: 1.5
   }
   rotation {
     x: 0.0
-    y: -0.25881904
+    y: -0.42261827
     z: 0.0
-    w: 0.9659258
+    w: 0.9063078
   }
   scale3 {
-    x: 0.3
-    y: 0.3
-    z: 0.3
+    x: 0.25
+    y: 0.2
+    z: 0.25
   }
 }
 scale_along_z: 0
@@ -357,13 +357,13 @@ embedded_instances {
   position {
     x: 0.0
     y: 20.0
-    z: 20.0
+    z: 19.0
   }
   rotation {
-    x: -0.17364818
+    x: -0.19936794
     y: 0.0
     z: 0.0
-    w: 0.9848077
+    w: 0.9799247
   }
   scale3 {
     x: 1.0
