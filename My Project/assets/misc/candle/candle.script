@@ -1,0 +1,7 @@
+go.property("emit", true)
+
+function init(self)
+	if self.emit == true then
+		particlefx.play("#fire")
+	end
+end
