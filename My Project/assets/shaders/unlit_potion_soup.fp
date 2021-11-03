@@ -12,7 +12,7 @@ void main()
     vec4 color = texture2D(tex0, var_texcoord0.xy);
 
     // increase alpha above certain float "height"
-    float visibility = mix(color.a*5, 0.0, var_position.y + 1.0);
+    float visibility = mix(color.a * 5.0, 0.0, var_position.y + 1.0);
 
     gl_FragColor = vec4(color.rgb*tint.xyz, tint.w*color.a*visibility);
 }
