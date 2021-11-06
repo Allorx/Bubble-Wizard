@@ -50,7 +50,7 @@ embedded_components {
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/char/wizard.dae\"\n"
+  data: "mesh: \"/assets/char/witch.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
   "textures: \"/assets/char/Wizard_base.png\"\n"
   "skeleton: \"\"\n"
