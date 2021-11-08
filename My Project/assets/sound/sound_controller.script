@@ -1,5 +1,5 @@
 function init(self)
-	sound.play("#background_music", {delay = 0, gain = 0.2, pan = 0, speed = 1})
+	--sound.play("#background_music", {delay = 0, gain = 0.2, pan = 0, speed = 1})
 end
 
 function on_message(self, message_id, message, sender)

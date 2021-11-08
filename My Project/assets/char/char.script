@@ -7,7 +7,6 @@ local velocity_mult = 1.8
 local attack_length = 0.5
 local checked_held = false
 local attack_offset = 2
-local staff_attack_pos = vmath.vector3(0, 1, 1.5)
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
@@ -17,9 +16,10 @@ function init(self)
 
 	self.bolt_id = go.get_id("/bolt")
 	self.staff_id = go.get_id("/staff")
+	self.left_hand_id = go.get_id("/left_hand")
 	self.bolt_pos_y = go.get_position(self.bolt_id).y
-	self.staff_pos = go.get_position(self.staff_id)
 	self.staff_rot = go.get_rotation(self.staff_id)
+	self.left_hand_rot = go.get_rotation(self.left_hand_id)
 	self.can_touch = true
 end
 
@@ -47,7 +47,9 @@ function on_input(self, action_id, action)
 				end
 				go.set("/char_model", "rotation", vmath.quat_rotation_y(-90))
 				go.set("/char_model", "scale.y", 1)
-				go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.8, go.EASING_LINEAR, 0.2)
+				go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.85, go.EASING_LINEAR, 0.2)
+				go.animate("/char_model", "euler.x", go.PLAYBACK_ONCE_PINGPONG, 2, go.EASING_INOUTEXPO, 0.2)
+				go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_INOUTELASTIC, 0.2)
 			else
 				-- rotate right
 				if velocity > max_velocity then
@@ -57,7 +59,9 @@ function on_input(self, action_id, action)
 				end
 				go.set("/char_model", "rotation", vmath.quat_rotation_y(90))
 				go.set("/char_model", "scale.y", 1)
-				go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.8, go.EASING_LINEAR, 0.2)
+				go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.85, go.EASING_LINEAR, 0.2)
+				go.animate("/char_model", "euler.x", go.PLAYBACK_ONCE_PINGPONG, 2, go.EASING_INOUTEXPO, 0.2)
+				go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_INOUTELASTIC, 0.2)
 			end
 		end
 	end
@@ -72,11 +76,14 @@ end
 function attack(self)
 	self.can_touch = false
 	go.set("/char_model", "rotation", vmath.quat_rotation_y(0))
-	go.set("/staff", "rotation", vmath.quat())
-	go.set("/staff", "position", staff_attack_pos)
-	go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.8, go.EASING_INOUTELASTIC, attack_length)
-	go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_INOUTELASTIC, attack_length)
-	go.animate("/staff", "position.y", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_OUTEXPO, attack_length)
+	go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.7, go.EASING_INOUTELASTIC, attack_length)
+	go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.2, go.EASING_INOUTELASTIC, attack_length)
+	go.set("/staff", "euler.x", -80)
+	go.set("/staff", "euler.y", 35)
+	go.set("/staff", "euler.z", 10)
+	go.set("/left_hand", "euler.x", -80)
+	go.set("/left_hand", "euler.y", -35)
+	go.set("/left_hand", "euler.z", -10)
 	go.set("/bolt", "position.y", attack_offset)
 	go.animate("/bolt", "position.y", go.PLAYBACK_ONCE_FORWARD, 25, go.EASING_LINEAR, attack_length, 0, end_attack)
 end
@@ -85,7 +92,7 @@ function end_attack(self)
 	self.can_touch = true
 	go.set("/bolt", "position.y", self.bolt_pos_y)
 	go.set("/staff", "rotation", self.staff_rot)
-	go.set("/staff", "position", self.staff_pos)
+	go.set("/left_hand", "rotation", self.left_hand_rot)
 end
 
 -- rotate & rotation function from: https://forum.defold.com/t/simple-rotation-and-facing/65681

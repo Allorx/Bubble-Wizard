@@ -1,0 +1,102 @@
+local velocity_addition = 15
+local velocity = 0
+local max_velocity = 70
+local tap_delay = 0.3
+local friction = 0.1
+local velocity_mult = 1.8
+local attack_length = 0.5
+local checked_held = false
+local attack_offset = 2
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	-- for 3d rendering
+	msg.post("@render:", "use_camera_projection")
+	msg.post("camera", "acquire_camera_focus")
+
+	self.bolt_id = go.get_id("/bolt")
+	self.bolt_pos_y = go.get_position(self.bolt_id).y
+	self.can_touch = true
+end
+
+function update(self, dt)
+	rotate(".", rotation() + velocity * dt)
+	velocity = velocity*(1-friction)
+end
+
+function on_input(self, action_id, action)
+	if action_id == hash("touch") and self.can_touch == true then
+		-- !!!!! 640 is the same width as in game.project - must be same
+		-- check if held
+		if action.pressed then
+			checked_held = false
+			self.handle = timer.delay(tap_delay, false, func_held)
+		elseif action.released and checked_held == false then
+			--tapped
+			timer.cancel(self.handle)
+			if action.x < 640/2 then
+				-- rotate left
+				if velocity < -max_velocity then
+					velocity = -max_velocity
+				else
+					velocity = (velocity-velocity_addition)*velocity_mult
+				end
+				go.set("/char_model", "rotation", vmath.quat_rotation_y(-90))
+				go.set("/char_model", "scale.y", 1)
+				go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.85, go.EASING_LINEAR, 0.2)
+				go.animate("/char_model", "euler.x", go.PLAYBACK_ONCE_PINGPONG, 2, go.EASING_INOUTEXPO, 0.2)
+				go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_INOUTELASTIC, 0.2)
+			else
+				-- rotate right
+				if velocity > max_velocity then
+					velocity = max_velocity
+				else
+					velocity = (velocity+velocity_addition)*velocity_mult
+				end
+				go.set("/char_model", "rotation", vmath.quat_rotation_y(90))
+				go.set("/char_model", "scale.y", 1)
+				go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.85, go.EASING_LINEAR, 0.2)
+				go.animate("/char_model", "euler.x", go.PLAYBACK_ONCE_PINGPONG, 2, go.EASING_INOUTEXPO, 0.2)
+				go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.1, go.EASING_INOUTELASTIC, 0.2)
+			end
+		end
+	end
+end
+
+function func_held(self)
+	-- held
+	checked_held = true
+	attack(self)
+end
+
+function attack(self)
+	self.can_touch = false
+	go.set("/char_model", "rotation", vmath.quat_rotation_y(0))
+	go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.7, go.EASING_INOUTELASTIC, attack_length)
+	go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.2, go.EASING_INOUTELASTIC, attack_length)
+	go.set("/bolt", "position.y", attack_offset)
+	go.animate("/bolt", "position.y", go.PLAYBACK_ONCE_FORWARD, 25, go.EASING_LINEAR, attack_length, 0, end_attack)
+end
+
+function end_attack(self)
+	self.can_touch = true
+	go.set("/bolt", "position.y", self.bolt_pos_y)
+end
+
+-- rotate & rotation function from: https://forum.defold.com/t/simple-rotation-and-facing/65681
+function rotate(from, to)
+	if tonumber(to) then
+		if to == nil then
+			to = go.get_id()
+		end
+		go.set(from, "euler.y", to)
+	else
+		local direction = go.get_position(to) - go.get_position(from)
+		local rotation = vmath.quat_rotation_z(math.atan2(direction.y, direction.x))
+		go.set_rotation(rotation, from)
+	end
+end
+
+function rotation(url)
+	return go.get(url or ".", "euler.y")
+end

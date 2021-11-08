@@ -52,7 +52,30 @@ embedded_components {
   type: "model"
   data: "mesh: \"/assets/char/witch.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/char/Wizard_base.png\"\n"
+  "textures: \"/assets/char/witch_base.001.png\"\n"
+  "skeleton: \"\"\n"
+  "animations: \"\"\n"
+  "default_animation: \"\"\n"
+  "name: \"unnamed\"\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "model1"
+  type: "model"
+  data: "mesh: \"/assets/char/witch_hair.dae\"\n"
+  "material: \"/assets/shaders/lit.material\"\n"
+  "textures: \"/assets/char/witch_hair.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"

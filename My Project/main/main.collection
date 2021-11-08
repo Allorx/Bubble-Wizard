@@ -65,9 +65,9 @@ instances {
     w: 0.9659258
   }
   scale3 {
-    x: 1.2
-    y: 1.2
-    z: 1.2
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 instances {
@@ -133,6 +133,7 @@ instances {
 instances {
   id: "char_model"
   prototype: "/assets/char/char_model.go"
+  children: "left_hand"
   children: "staff"
   position {
     x: 0.0
@@ -193,22 +194,22 @@ instances {
 }
 instances {
   id: "staff"
-  prototype: "/assets/staffs/staff.go"
+  prototype: "/assets/char_hands/staff.go"
   position {
-    x: -1.5
-    y: 0.0
+    x: -0.35
+    y: 3.5
     z: 0.0
   }
   rotation {
-    x: -0.12426139
-    y: -0.24901995
-    z: -0.018469552
-    w: 0.9603161
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
   }
   scale3 {
-    x: 2.0
-    y: 2.0
-    z: 2.0
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 instances {
@@ -236,7 +237,7 @@ instances {
   prototype: "/assets/cauldron/potion_soup.go"
   position {
     x: 0.0
-    y: 4.0
+    y: 3.1
     z: 0.0
   }
   rotation {
@@ -365,18 +366,30 @@ instances {
     z: 0.0
     w: 0.8480481
   }
-  component_properties {
-    id: "candle"
-    properties {
-      id: "emit"
-      value: "false"
-      type: PROPERTY_TYPE_BOOLEAN
-    }
-  }
   scale3 {
     x: 0.14
     y: 0.07
     z: 0.14
+  }
+}
+instances {
+  id: "left_hand"
+  prototype: "/assets/char_hands/left_hand.go"
+  position {
+    x: 0.35
+    y: 3.5
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 scale_along_z: 0
