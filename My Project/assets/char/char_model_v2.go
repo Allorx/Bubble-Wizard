@@ -75,7 +75,7 @@ embedded_components {
   type: "model"
   data: "mesh: \"/assets/char/witch_cat_hat.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/enemies/SoapAlbedo.png\"\n"
+  "textures: \"/assets/misc/campfire_base.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
