@@ -26,7 +26,7 @@ embedded_components {
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 0.25\n"
+  "  data: 0.3\n"
   "  data: 0.5\n"
   "  data: 0.25\n"
   "}\n"
@@ -50,9 +50,32 @@ embedded_components {
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/char/wizard.dae\"\n"
+  data: "mesh: \"/assets/char/witch_cat.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/char/Wizard_base.png\"\n"
+  "textures: \"/assets/char/witch_cat.png\"\n"
+  "skeleton: \"\"\n"
+  "animations: \"\"\n"
+  "default_animation: \"\"\n"
+  "name: \"unnamed\"\n"
+  ""
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+embedded_components {
+  id: "model1"
+  type: "model"
+  data: "mesh: \"/assets/char/witch_cat_hat.dae\"\n"
+  "material: \"/assets/shaders/lit.material\"\n"
+  "textures: \"/assets/enemies/SoapAlbedo.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"

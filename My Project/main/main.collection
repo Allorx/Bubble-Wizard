@@ -247,7 +247,7 @@ instances {
     w: 1.0
   }
   scale3 {
-    x: 2.0
+    x: 1.7
     y: 1.0
     z: 2.0
   }

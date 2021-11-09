@@ -50,9 +50,9 @@ embedded_components {
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/test/quad_15.dae\"\n"
+  data: "mesh: \"/assets/misc/floor_round.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/enemies/SoapAlbedo.png\"\n"
+  "textures: \"/assets/misc/rock.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
