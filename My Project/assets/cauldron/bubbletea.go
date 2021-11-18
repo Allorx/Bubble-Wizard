@@ -2,7 +2,7 @@ embedded_components {
   id: "model"
   type: "model"
   data: "mesh: \"/assets/cauldron/bubbleteacup.dae\"\n"
-  "material: \"/assets/shaders/cup.material\"\n"
+  "material: \"/assets/shaders/unlit_cup.material\"\n"
   "textures: \"/assets/cauldron/bubbleteacup_base.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
