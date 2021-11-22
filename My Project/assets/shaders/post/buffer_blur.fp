@@ -7,7 +7,16 @@ uniform lowp vec4 tint;
 
 void main()
 {
-	vec4 color = texture2D(original, var_texcoord0.xy);
+	//vec4 color = texture2D(original, var_texcoord0.xy);
+
+	//chromatic abberation
+	vec4 rValue = texture2D(original, var_texcoord0.xy - 0.002);  
+	vec4 gValue = texture2D(original, var_texcoord0.xy);
+	vec4 bValue = texture2D(original, var_texcoord0.xy + 0.002);  
+
+	// Combine the offset colors.
+	vec4 color = vec4(rValue.r, gValue.g, bValue.b, 1.0);
+	
 	vec4 color_blur = vec4(0., 0., 0., 1.);
 	vec4 amount = texture2D(original_depth, var_texcoord0.xy);
 	

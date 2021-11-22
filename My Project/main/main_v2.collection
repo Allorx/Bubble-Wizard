@@ -26,6 +26,7 @@ instances {
 instances {
   id: "floor"
   prototype: "/assets/misc/floor_v2.go"
+  children: "book"
   position {
     x: 0.0
     y: 0.0
@@ -68,8 +69,8 @@ instances {
   prototype: "/assets/score_control/score_controller.go"
   position {
     x: 0.0
-    y: 0.0
-    z: 8.0
+    y: 0.5
+    z: 8.5
   }
   rotation {
     x: -0.25881904
@@ -184,8 +185,9 @@ instances {
   }
 }
 instances {
-  id: "bubbletea"
-  prototype: "/assets/cauldron/bubbletea.go"
+  id: "cauldron"
+  prototype: "/assets/cauldron/cauldron.go"
+  children: "soup"
   position {
     x: 0.0
     y: 0.0
@@ -201,6 +203,46 @@ instances {
     x: 1.0
     y: 1.0
     z: 1.0
+  }
+}
+instances {
+  id: "soup"
+  prototype: "/assets/cauldron/soup.go"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
+  }
+}
+instances {
+  id: "book"
+  prototype: "/assets/misc/book.go"
+  position {
+    x: -0.625
+    y: 0.0
+    z: 1.25
+  }
+  rotation {
+    x: 0.0
+    y: -0.34202015
+    z: 0.0
+    w: 0.9396926
+  }
+  scale3 {
+    x: 0.2
+    y: 0.2
+    z: 0.2
   }
 }
 scale_along_z: 0

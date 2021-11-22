@@ -1,0 +1,12 @@
+go.property("velocity", 50)
+
+function init(self)
+	particlefx.play("#soup")
+	particlefx.play("#soup1")
+end
+
+function update(self, dt)
+	--rotate around y axis by velocity
+	local new_rot = self.velocity * dt + go.get("/soup", "euler.y")
+	go.set("/soup", "euler.y", new_rot)
+end

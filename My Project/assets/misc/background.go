@@ -1,8 +1,8 @@
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/misc/inverted_cube.dae\"\n"
-  "material: \"/assets/shaders/unlit.material\"\n"
+  data: "mesh: \"/assets/misc/inverted_sphere.dae\"\n"
+  "material: \"/assets/shaders/unlit_background.material\"\n"
   "textures: \"/assets/test/black.jpg\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"

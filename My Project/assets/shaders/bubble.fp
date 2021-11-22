@@ -14,7 +14,7 @@ void main()
     
     // Fresnel
     float fresnelTerm = dot(viewDirectionW, var_normal);
-    fresnelTerm = clamp(1.0 - fresnelTerm, 0.9, 1.);
+    fresnelTerm = clamp(1.0 - fresnelTerm, 0.8, 1.);
 
     //fog
     //vec3 fog = mix(tint.xyz, color.rgb, -var_position.z*0.02);

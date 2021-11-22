@@ -50,7 +50,7 @@ embedded_components {
   type: "model"
   data: "mesh: \"/assets/bolts/bolt.dae\"\n"
   "material: \"/assets/shaders/unlit_bolt.material\"\n"
-  "textures: \"/assets/test/white.jpg\"\n"
+  "textures: \"/assets/bolts/Bolt_base.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
