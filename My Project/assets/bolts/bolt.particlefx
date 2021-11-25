@@ -27,7 +27,7 @@ emitters {
     key: EMITTER_KEY_SPAWN_RATE
     points {
       x: 0.0
-      y: 30.0
+      y: 60.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -57,7 +57,7 @@ emitters {
     key: EMITTER_KEY_SIZE_Z
     points {
       x: 0.0
-      y: 0.0
+      y: 1.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -87,7 +87,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_SIZE
     points {
       x: 0.0
-      y: 2.0
+      y: 1.5
       t_x: 1.0
       t_y: 0.0
     }
@@ -156,45 +156,45 @@ emitters {
     key: PARTICLE_KEY_RED
     points {
       x: 0.0
-      y: 1.0
-      t_x: 0.16535185
-      t_y: -0.98623466
+      y: 1.2899948
+      t_x: 0.45291403
+      t_y: 0.8915542
     }
     points {
       x: 1.0
-      y: 0.014017636
-      t_x: 1.0
-      t_y: 0.0
+      y: 0.04301712
+      t_x: 0.21337382
+      t_y: -0.9769706
     }
   }
   particle_properties {
     key: PARTICLE_KEY_GREEN
     points {
       x: 0.0
-      y: 1.2319958
-      t_x: 0.31152818
-      t_y: 0.9502369
-    }
-    points {
-      x: 0.13661972
-      y: 1.3460679
-      t_x: 0.18748774
-      t_y: -0.98226696
+      y: 1.3189943
+      t_x: 0.25256023
+      t_y: -0.96758115
     }
     points {
       x: 1.0
-      y: 0.014017636
-      t_x: 1.0
-      t_y: 0.0
+      y: 0.0720166
+      t_x: 0.45473903
+      t_y: -0.8906247
     }
   }
   particle_properties {
     key: PARTICLE_KEY_BLUE
     points {
       x: 0.0
-      y: 1.0
-      t_x: 1.0
-      t_y: 0.0
+      y: 1.2899948
+      t_x: 0.17354704
+      t_y: -0.98482555
+    }
+    points {
+      x: 1.0
+      y: 2.3049767
+      t_x: 0.101932935
+      t_y: 0.99479127
     }
   }
   particle_properties {
@@ -206,22 +206,10 @@ emitters {
       t_y: 0.99740857
     }
     points {
-      x: 0.11320755
-      y: 0.99277455
-      t_x: 0.99418455
-      t_y: 0.10768964
-    }
-    points {
-      x: 0.7112546
-      y: 0.555656
-      t_x: 0.5694311
-      t_y: -0.82203907
-    }
-    points {
       x: 1.0
-      y: 0.0072254334
-      t_x: 0.4737472
-      t_y: -0.8806609
+      y: 0.057998963
+      t_x: 0.7946285
+      t_y: -0.607096
     }
   }
   particle_properties {
