@@ -107,6 +107,7 @@ instances {
 instances {
   id: "char_model"
   prototype: "/assets/char/char_model_v2.go"
+  children: "broom"
   position {
     x: 0.0
     y: 0.0
@@ -243,6 +244,26 @@ instances {
     x: 0.2
     y: 0.2
     z: 0.2
+  }
+}
+instances {
+  id: "broom"
+  prototype: "/assets/staff/broom.go"
+  position {
+    x: -1.0
+    y: 0.0
+    z: 1.0
+  }
+  rotation {
+    x: -0.3007058
+    y: 0.0
+    z: 0.0
+    w: 0.95371693
+  }
+  scale3 {
+    x: 1.0
+    y: 1.0
+    z: 1.0
   }
 }
 scale_along_z: 0

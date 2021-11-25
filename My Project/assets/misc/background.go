@@ -1,9 +1,9 @@
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/assets/misc/inverted_sphere.dae\"\n"
-  "material: \"/assets/shaders/unlit.material\"\n"
-  "textures: \"/assets/misc/background_base.png\"\n"
+  data: "mesh: \"/assets/misc/inverted_sphere2.dae\"\n"
+  "material: \"/assets/shaders/unlit_background.material\"\n"
+  "textures: \"/assets/test/black.jpg\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
