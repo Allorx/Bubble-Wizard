@@ -4,15 +4,16 @@ varying mediump vec2 var_texcoord0;
 uniform lowp sampler2D original;
 uniform lowp sampler2D original_depth;
 uniform lowp vec4 tint;
+uniform lowp vec4 chromatic;
 
 void main()
 {
 	//vec4 color = texture2D(original, var_texcoord0.xy);
 
 	//chromatic abberation
-	vec4 rValue = texture2D(original, var_texcoord0.xy - 0.002);  
+	vec4 rValue = texture2D(original, var_texcoord0.xy - chromatic.x);  
 	vec4 gValue = texture2D(original, var_texcoord0.xy);
-	vec4 bValue = texture2D(original, var_texcoord0.xy + 0.002);  
+	vec4 bValue = texture2D(original, var_texcoord0.xy + chromatic.x);  
 
 	// Combine the offset colors.
 	vec4 color = vec4(rValue.r, gValue.g, bValue.b, 1.0);

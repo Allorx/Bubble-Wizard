@@ -27,7 +27,7 @@ emitters {
     key: EMITTER_KEY_SPAWN_RATE
     points {
       x: 0.0
-      y: 5.0
+      y: 3.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -71,7 +71,7 @@ emitters {
       t_x: 1.0
       t_y: 0.0
     }
-    spread: 0.0
+    spread: 0.5
   }
   properties {
     key: EMITTER_KEY_PARTICLE_SPEED
@@ -131,7 +131,7 @@ emitters {
       t_x: 1.0
       t_y: 0.0
     }
-    spread: 0.5
+    spread: 0.0
   }
   properties {
     key: EMITTER_KEY_PARTICLE_ROTATION

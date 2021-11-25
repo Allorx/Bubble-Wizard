@@ -4,7 +4,7 @@ function on_message(self, message_id, message, sender)
 		-- react to collision
 		if message.other_group == hash("char") then
 			-- move out of view
-			go.set_position(vmath.vector3(0, -10, 0))
+			go.set_position(vmath.vector3(0, -100, 0))
 			-- activate buff effects
 			
 			

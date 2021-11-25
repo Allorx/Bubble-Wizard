@@ -1,3 +1,18 @@
+components {
+  id: "bolt"
+  component: "/assets/bolts/bolt.particlefx"
+  position {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "collisionobject"
   type: "collisionobject"
@@ -49,8 +64,8 @@ embedded_components {
   id: "model"
   type: "model"
   data: "mesh: \"/assets/bolts/bolt.dae\"\n"
-  "material: \"/assets/shaders/unlit_bolt.material\"\n"
-  "textures: \"/assets/bolts/Bolt_base.png\"\n"
+  "material: \"/assets/shaders/unlit.material\"\n"
+  "textures: \"/assets/test/white.jpg\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
@@ -59,7 +74,7 @@ embedded_components {
   position {
     x: 0.0
     y: 0.0
-    z: 1.0
+    z: 0.0
   }
   rotation {
     x: 0.0

@@ -73,7 +73,7 @@ function init(self)
     self.target = render.render_target("original", target_params)
     self.target_depth = render.render_target("original_depth", target_params)
 
-    self.near = 0.1
+    self.near = 0.5
     self.far = 20.0
     self.projection_fn = stretch_projection
 end

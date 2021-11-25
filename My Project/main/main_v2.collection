@@ -70,7 +70,7 @@ instances {
   position {
     x: 0.0
     y: 0.5
-    z: 8.5
+    z: 7.5
   }
   rotation {
     x: -0.25881904
@@ -190,7 +190,7 @@ instances {
   children: "soup"
   position {
     x: 0.0
-    y: 0.0
+    y: 0.1
     z: 0.0
   }
   rotation {
@@ -230,7 +230,7 @@ instances {
   prototype: "/assets/misc/book.go"
   position {
     x: -0.625
-    y: 0.0
+    y: 0.1
     z: 1.25
   }
   rotation {

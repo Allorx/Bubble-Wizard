@@ -74,6 +74,7 @@ function attack(self)
 	go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.2, go.EASING_INOUTELASTIC, attack_length)
 	go.set("/bolt", "position.y", attack_offset)
 	go.animate("/bolt", "position.y", go.PLAYBACK_ONCE_FORWARD, 25, go.EASING_LINEAR, attack_length, 0, end_attack)
+	particlefx.play("/bolt#bolt")
 end
 
 function end_attack(self)
