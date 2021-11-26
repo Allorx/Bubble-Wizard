@@ -3,7 +3,7 @@ function init(self)
 end
 
 function on_message(self, message_id, message, sender)
-	-- Add message-handling code here
-	-- Learn more: https://defold.com/manuals/message-passing/
-	-- Remove this function if not needed
+	if message_id == hash('play_bubble') then
+		sound.play("#bubble", {delay = 0, gain = 0.5, pan = 0, speed = 1})
+	end
 end
