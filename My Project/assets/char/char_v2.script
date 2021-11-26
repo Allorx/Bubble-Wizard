@@ -37,6 +37,7 @@ function on_input(self, action_id, action)
 		elseif action.released and checked_held == false then
 			--tapped
 			timer.cancel(self.handle)
+			msg.post("new:/sound_controller#sound_controller", "play_shuffle")
 			if action.x < 640/2 then
 				-- rotate left
 				if velocity < -max_velocity then
