@@ -50,5 +50,6 @@ function post_me(self)
 end
 
 function try_me(self)
+	msg.post("new:/sound_controller#sound_controller", "play_bubble")
 	go.delete(".")
 end
