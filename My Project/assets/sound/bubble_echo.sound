@@ -1,4 +1,4 @@
-sound: "/assets/sound/Bubble Three.wav"
+sound: "/assets/sound/Bubble One.wav"
 looping: 0
 group: "master"
 gain: 1.0

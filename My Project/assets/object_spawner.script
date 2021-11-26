@@ -28,6 +28,7 @@ function spawn_new(self)
 end
 
 function set_new(self, id, pos, url)
+	msg.post("new:/sound_controller#sound_controller", "play_bubble_spawn")
 	go.animate(id, "position", go.PLAYBACK_ONCE_FORWARD, pos, go.EASING_INOUTQUAD, self.set_delay, 0, function()go.set(url, "linear_damping", 0)end)
 	go.animate(id, "scale", go.PLAYBACK_ONCE_FORWARD, self.final_scale, go.EASING_INOUTCUBIC, self.set_delay)
 end
