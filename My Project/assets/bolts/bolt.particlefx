@@ -1,7 +1,7 @@
 emitters {
   id: "emitter"
   mode: PLAY_MODE_ONCE
-  duration: 0.5
+  duration: 0.4
   space: EMISSION_SPACE_WORLD
   position {
     x: 0.0
@@ -67,7 +67,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_LIFE_TIME
     points {
       x: 0.0
-      y: 0.5
+      y: 0.4
       t_x: 1.0
       t_y: 0.0
     }

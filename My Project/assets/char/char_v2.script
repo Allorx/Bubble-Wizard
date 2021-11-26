@@ -16,6 +16,9 @@ function init(self)
 
 	self.bolt_id = go.get_id("/bolt")
 	self.bolt_pos_y = go.get_position(self.bolt_id).y
+	self.broom_id = go.get_id("/broom")
+	self.broom_pos = go.get_position(self.broom_id)
+	self.broom_rot = go.get_rotation(self.broom_id)
 	self.can_touch = true
 end
 
@@ -69,6 +72,9 @@ end
 
 function attack(self)
 	self.can_touch = false
+	particlefx.stop("/bolt#bolt")
+	go.set("/broom", "rotation", vmath.quat_rotation_y(0))
+	go.set("/broom", "position", vmath.vector3(0,0,1.2))
 	go.set("/char_model", "rotation", vmath.quat_rotation_y(0))
 	go.animate("/char_model", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.7, go.EASING_INOUTELASTIC, attack_length)
 	go.animate("/char_model", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 1.2, go.EASING_INOUTELASTIC, attack_length)
@@ -80,6 +86,8 @@ end
 function end_attack(self)
 	self.can_touch = true
 	go.set("/bolt", "position.y", self.bolt_pos_y)
+	go.set("/broom", "rotation", self.broom_rot)
+	go.set("/broom", "position", self.broom_pos)
 end
 
 -- rotate & rotation function from: https://forum.defold.com/t/simple-rotation-and-facing/65681
