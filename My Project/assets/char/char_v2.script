@@ -81,6 +81,7 @@ function attack(self)
 	go.set("/bolt", "position.y", attack_offset)
 	go.animate("/bolt", "position.y", go.PLAYBACK_ONCE_FORWARD, 25, go.EASING_LINEAR, attack_length, 0, end_attack)
 	particlefx.play("/bolt#bolt")
+	msg.post("new:/sound_controller#sound_controller", "play_bolt")
 end
 
 function end_attack(self)
