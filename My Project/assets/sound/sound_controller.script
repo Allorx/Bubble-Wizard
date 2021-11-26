@@ -6,7 +6,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash('play_bubble') then
 		sound.play("#bubble", {delay = 0, gain = 0.5, pan = 0, speed = 1})
 	elseif message_id == hash('play_bubble_spawn') then
-		sound.play("#bubble_echo", {delay = 0, gain = 0.5, pan = 0, speed = 1})
+		sound.play("#bubble_echo", {delay = 0, gain = 0.1, pan = 0, speed = 0.7})
 	elseif message_id == hash('play_bolt') then
 		sound.play("#bolt", {delay = 0, gain = 0.5, pan = 0, speed = 1})
 	end
