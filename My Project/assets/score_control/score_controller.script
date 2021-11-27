@@ -27,6 +27,8 @@ end
 function on_message(self, message_id, message)
 	if message_id == hash("add_score") then
 		self.score = self.score + message.amount
+		go.animate("#score", "scale.y", go.PLAYBACK_ONCE_PINGPONG, 0.025, go.EASING_INBOUNCE, 0.5)
+		go.animate("#score", "scale.x", go.PLAYBACK_ONCE_PINGPONG, 0.025, go.EASING_INBOUNCE, 0.5)
 		if self.score > self.highscore then
 			self.highscore = self.score
 			save_highscore(self.highscore)

@@ -23,8 +23,8 @@ embedded_components {
   "  w: 0.0\n"
   "}\n"
   "scale {\n"
-  "  x: 0.03\n"
-  "  y: 0.03\n"
+  "  x: 0.02\n"
+  "  y: 0.02\n"
   "  z: 1.0\n"
   "  w: 0.0\n"
   "}\n"
@@ -57,7 +57,7 @@ embedded_components {
   ""
   position {
     x: 0.0
-    y: 1.0
+    y: 0.75
     z: 0.0
   }
   rotation {
@@ -77,8 +77,8 @@ embedded_components {
   "  w: 0.0\n"
   "}\n"
   "scale {\n"
-  "  x: 0.01\n"
-  "  y: 0.01\n"
+  "  x: 0.007\n"
+  "  y: 0.007\n"
   "  z: 1.0\n"
   "  w: 0.0\n"
   "}\n"

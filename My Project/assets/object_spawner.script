@@ -1,7 +1,7 @@
 go.property("spawn_pos", vmath.vector3(0, 2, 0))
 go.property("init_scale", vmath.vector3(0.1, 0.1, 0.1))
 go.property("final_scale", vmath.vector3(2, 2, 2))
-go.property("init_offset", vmath.vector3(0, 0, -4))
+go.property("init_offset", vmath.vector3(0, 0, -3.5))
 go.property("min_velocity", 0.15)
 -- for setting to interactable pos
 go.property("set_delay", 3)

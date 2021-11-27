@@ -52,7 +52,7 @@ embedded_components {
   type: "model"
   data: "mesh: \"/assets/misc/island.dae\"\n"
   "material: \"/assets/shaders/lit.material\"\n"
-  "textures: \"/assets/misc/tower_base.png\"\n"
+  "textures: \"/assets/misc/island_base.png\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
   "default_animation: \"\"\n"
