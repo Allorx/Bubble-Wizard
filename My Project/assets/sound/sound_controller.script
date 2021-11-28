@@ -1,15 +1,15 @@
 function init(self)
-	sound.play("#background_music", {delay = 0, gain = 0.04, pan = 0, speed = 1})
+	sound.play("#background_music", {delay = 0, gain = 0.3, pan = 0, speed = 1})
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash('play_bubble') then
 		sound.play("#bubble", {delay = 0, gain = 0.5, pan = 0, speed = 0.8})
 	elseif message_id == hash('play_bubble_spawn') then
-		sound.play("#bubble_echo", {delay = 0, gain = 0.1, pan = 0, speed = 0.7})
+		sound.play("#bubble_echo", {delay = 0, gain = 0.2, pan = 0, speed = 0.7})
 	elseif message_id == hash('play_bolt') then
 		sound.play("#bolt", {delay = 0, gain = 0.5, pan = 0, speed = 1.0})
 	elseif message_id == hash('play_shuffle') then
-		sound.play("#shuffle", {delay = 0, gain = 0.4, pan = 0, speed = 0.7})
+		sound.play("#shuffle", {delay = 0, gain = 0.3, pan = 0, speed = 0.5})
 	end
 end
