@@ -11,5 +11,7 @@ function on_message(self, message_id, message, sender)
 		sound.play("#bolt", {delay = 0, gain = 0.5, pan = 0, speed = 1.0})
 	elseif message_id == hash('play_shuffle') then
 		sound.play("#shuffle", {delay = 0, gain = 0.3, pan = 0, speed = 0.5})
+	elseif message_id == hash('play_buff') then
+		sound.play("#buff", {delay = 0, gain = 0.2, pan = 0, speed = 2})
 	end
 end
