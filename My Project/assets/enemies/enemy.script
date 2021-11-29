@@ -3,6 +3,7 @@ go.property("enabled", false)
 -- counter is used to store the iteration of enemy i.e. big enemy splits into smaller enemies until final counter.
 go.property("counter", 0)
 go.property("final_counter", 3)
+go.property("tint", vmath.vector4(0,0,0,0))
 
 local max_height = 7
 local vel_reduction = vmath.vector3(0, -0.05, 0)
@@ -11,7 +12,8 @@ function init(self)
 	timer.delay(0.5, false, enable_trigger)
 	self.bolt_id = go.get_id("/bolt")
 	--choose colour
-	go.set("#model", "tint", vmath.vector4(math.random(), math.random(), math.random(), 1))
+	self.tint = vmath.vector4(math.random(), math.random(), math.random(), 1)
+	go.set("#model", "tint", self.tint)
 end
 
 function update(self, dt)
@@ -38,6 +40,12 @@ function on_message(self, message_id, message, sender)
 		elseif message.other_group == hash("char") then
 			-- collided with char
 			msg.post("new:/main#loader", "reset")
+		end
+	end
+	if message_id == hash("contact_point_response") then
+		if message.other_group == hash("floor") then
+			-- collided with floor
+			msg.post("/object_spawner", "create_splash", {splash_position = message.position, splash_colour = self.tint})
 		end
 	end
 end

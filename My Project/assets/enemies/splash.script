@@ -1,0 +1,20 @@
+go.property("splash_colour", vmath.vector4(0,0,0,0))
+go.property("time_to_clean", 0.3)
+
+function init(self)
+	go.set("#model", "tint", self.splash_colour)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") then
+		-- react to collision
+		if message.other_group == hash("char") and message.enter then
+			-- collided with char
+			go.animate("#model", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_INCIRC, self.time_to_clean, 0.0, end_splash)
+		end
+	end
+end
+
+function end_splash(self)
+	go.delete(".")
+end

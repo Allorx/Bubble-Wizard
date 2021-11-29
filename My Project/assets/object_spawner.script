@@ -48,6 +48,13 @@ function on_message(self, message_id, message, sender)
 		factory.create("#enemy_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = self.min_velocity + math.random()*math.random(), counter = counter}, go.get_world_scale(sender)/2)
 		factory.create("#enemy_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = -self.min_velocity - math.random()*math.random(), counter = counter}, go.get_world_scale(sender)/2)
 		spawn_buff(self, position)
+	elseif message_id == hash("create_splash") then
+		-- create splash at position
+		local position = message.splash_position
+		-- lift slightly above so looks cleaner? might remove
+		position.y = position.y + 0.1
+		local colour = message.splash_colour
+		factory.create("#splash_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {splash_colour = colour}, go.get_world_scale(sender))
 	elseif message_id == hash("spawn_new") then
 		spawn_new(self)
 	end

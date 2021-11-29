@@ -19,6 +19,6 @@ void main()
     //fog
     //vec3 fog = mix(color.rgb, blur_tex.rgb, -var_position.z*0.035);
 
-    gl_FragColor = vec4(color.rgb*tint.xyz*diff_light, tint.w);
+    gl_FragColor = vec4(color.rgb*tint.xyz*diff_light, tint.w*color.a);
 }
 
