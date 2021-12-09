@@ -17,7 +17,7 @@ embedded_components {
   id: "model"
   type: "model"
   data: "mesh: \"/builtins/assets/meshes/quad_2x2.dae\"\n"
-  "material: \"/assets/shaders/lit.material\"\n"
+  "material: \"/assets/shaders/bubble.material\"\n"
   "textures: \"/assets/test/white.jpg\"\n"
   "skeleton: \"\"\n"
   "animations: \"\"\n"
