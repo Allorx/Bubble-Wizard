@@ -12,7 +12,7 @@ function init(self)
 	timer.delay(0.5, false, enable_trigger)
 	self.bolt_id = go.get_id("/bolt")
 	--choose colour
-	self.tint = vmath.vector4(math.random(), math.random(), math.random(), 1)
+	-- self.tint = vmath.vector4(math.random(), math.random(), math.random(), 1)
 	go.set("#model", "tint", self.tint)
 end
 
@@ -45,7 +45,7 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("contact_point_response") then
 		if message.other_group == hash("floor") then
 			-- collided with floor
-			msg.post("/object_spawner", "create_splash", {splash_position = message.position, splash_colour = self.tint})
+			msg.post("/object_spawner", "create_splash", {splash_position = message.position, splash_colour = self.tint, splash_scale = go.get_scale()})
 		end
 	end
 end

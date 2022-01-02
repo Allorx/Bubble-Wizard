@@ -16,7 +16,7 @@ components {
 embedded_components {
   id: "model"
   type: "model"
-  data: "mesh: \"/builtins/assets/meshes/quad_2x2.dae\"\n"
+  data: "mesh: \"/assets/enemies/splash.dae\"\n"
   "material: \"/assets/shaders/bubble.material\"\n"
   "textures: \"/assets/test/white.jpg\"\n"
   "skeleton: \"\"\n"
@@ -30,10 +30,10 @@ embedded_components {
     z: 0.0
   }
   rotation {
-    x: -0.70710677
+    x: 0.0
     y: 0.0
     z: 0.0
-    w: 0.70710677
+    w: 1.0
   }
 }
 embedded_components {

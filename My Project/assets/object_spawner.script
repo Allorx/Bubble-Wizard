@@ -6,11 +6,12 @@ go.property("min_velocity", 0.15)
 -- for setting to interactable pos
 go.property("set_delay", 3)
 go.property("spawn_delay", 7)
+go.property("current_tint", vmath.vector4(0,0,0,0))
 
 function init(self)
 	math.randomseed(os.time())
 	-- initial spawn
-	local id = factory.create("#enemy_factory", self.spawn_pos, vmath.quat_rotation_y(math.random(0,3)+math.random()), nil, self.final_scale/4)
+	local id = factory.create("#enemy_factory", self.spawn_pos, vmath.quat_rotation_y(math.random(0,3)+math.random()), {tint = vmath.vector4(0.7,0.2,1,1)}, self.final_scale/4)
 	local pos = go.get_world_position() + self.init_offset
 	-- so gravity does not stack up velocity on enemy when animation is running increase damping and decrease when done animating
 	local url = msg.url("main", id, "collisionobject")
@@ -19,7 +20,7 @@ function init(self)
 end
 
 function spawn_new(self)
-	local id = factory.create("#enemy_factory", self.spawn_pos, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = math.random(-1,1)*math.random()}, self.init_scale)
+	local id = factory.create("#enemy_factory", self.spawn_pos, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = math.random(-1,1)*math.random(), tint = vmath.vector4(0.7,0.2,1,1)}, self.init_scale)
 	local pos = go.get_world_position() + vmath.rotate(vmath.quat_rotation_y(math.random(0,3) + math.random()), self.init_offset)
 	-- so gravity does not stack up velocity on enemy when animation is running disable and re-enable gravity when done animating
 	local url = msg.url("main", id, "collisionobject")
@@ -45,16 +46,16 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash("create_enemy") then
 		local counter = message.select_counter + 1
 		local position = message.set_position
-		factory.create("#enemy_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = self.min_velocity + math.random()*math.random(), counter = counter}, go.get_world_scale(sender)/2)
-		factory.create("#enemy_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = -self.min_velocity - math.random()*math.random(), counter = counter}, go.get_world_scale(sender)/2)
+		self.current_tint = vmath.vector4(math.random(),math.random(),math.random(),1)
+		factory.create("#enemy_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = self.min_velocity + math.random()*math.random(), counter = counter, tint = self.current_tint}, go.get_world_scale(sender)/2)
+		factory.create("#enemy_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {velocity = -self.min_velocity - math.random()*math.random(), counter = counter, tint = self.current_tint}, go.get_world_scale(sender)/2)
 		spawn_buff(self, position)
 	elseif message_id == hash("create_splash") then
 		-- create splash at position
 		local position = message.splash_position
 		-- lift slightly above so looks cleaner? might remove
-		position.y = position.y + 0.1
-		local colour = message.splash_colour
-		factory.create("#splash_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {splash_colour = colour}, go.get_world_scale(sender))
+		position.y = position.y + 0.01
+		factory.create("#splash_factory", position, vmath.quat_rotation_y(math.random(0,3)+math.random()), {splash_colour = message.splash_colour}, message.splash_scale)
 	elseif message_id == hash("spawn_new") then
 		spawn_new(self)
 	end

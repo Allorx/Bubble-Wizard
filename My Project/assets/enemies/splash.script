@@ -11,6 +11,10 @@ function on_message(self, message_id, message, sender)
 		if message.other_group == hash("char") and message.enter then
 			-- collided with char
 			go.animate("#model", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_INCIRC, self.time_to_clean, 0.0, end_splash)
+		elseif message_id == hash("splash") then
+			-- make new splash with mixed colours and end this splash
+			-- msg.post("/object_spawner", "create_splash", {splash_position = go.get_world_position(), splash_colour = (self.splash_colour + message.splash_colour)/2, splash_scale = go.get_world_scale()})
+			go.animate("#model", "tint.w", go.PLAYBACK_ONCE_FORWARD, 0, go.EASING_INCIRC, self.time_to_clean, 0.0, end_splash)
 		end
 	end
 end
